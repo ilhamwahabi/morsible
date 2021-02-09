@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import splitbee from '@splitbee/web';
+import 'typeface-roboto'
 
 import './index.less'
 import App from './App'
