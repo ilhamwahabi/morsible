@@ -1,22 +1,18 @@
-import { test } from 'uvu';
+import { suite } from 'uvu';
 import * as assert from 'uvu/assert';
 
-test('Math.sqrt()', () => {
-  assert.is(Math.sqrt(4), 2);
-  assert.is(Math.sqrt(144), 12);
-  assert.is(Math.sqrt(2), Math.SQRT2);
-});
+import { morseToText, textToMorse } from "./index";
 
-test('JSON', () => {
-  const input = {
-    foo: 'hello',
-    bar: 'world'
-  };
+const fromMorseToText = suite('fromMorseToText')
 
-  const output = JSON.stringify(input);
+const testCase = [
+  ['IF4081', '.. ..-. ....- ----- ---.. .----'],
+  ['iwgx', '.. .-- --. -..-'],
+  ['Semar - Morse translator', '... . -- .- .-. / -....- / -- --- .-. ... . / - .-. .- -. ... .-.. .- - --- .-.'],
+]
 
-  assert.snapshot(output, `{"foo":"hello","bar":"world"}`);
-  assert.equal(JSON.parse(output), input, 'matches original');
-});
+fromMorseToText('', () => {
+  assert.is(morseToText(testCase[0][1]), testCase[0][0])
+})
 
-test.run();
+fromMorseToText.run()
