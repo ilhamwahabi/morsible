@@ -8,7 +8,7 @@ Tech stack:
 
 - `React` (hooks) + `Typescript` with `Vite`
 - `jotai` for state management
-- `twin.macro` for styling
+- `less` for styling
 - `Framer Motion` for animation
 - `react-testing-library` for testing
 - `Splitbee` for analytics

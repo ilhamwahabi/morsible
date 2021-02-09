@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import splitbee from '@splitbee/web';
 
-import './index.css'
+import './index.less'
 import App from './App'
 
 splitbee.init()
