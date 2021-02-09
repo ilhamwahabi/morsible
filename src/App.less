@@ -1,0 +1,45 @@
+.App {
+  &__container {
+    max-width: 1080px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  &__header {
+    font-size: 32px;
+  }
+
+  &__main {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    textarea {
+      display: block;
+      width: 100%;
+      resize: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    textarea:last-child {
+      margin-top: 16px;
+    }
+
+    @media (min-width: 721px) {
+      flex-direction: row;
+
+      textarea {
+        width: 47.5%;
+      }
+
+      textarea:last-child {
+        margin-top: 0;
+      }
+    }
+  }
+}
