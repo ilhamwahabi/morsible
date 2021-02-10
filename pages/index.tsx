@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import 'twin.macro'
 
-import { textToMorse, morseToText } from "./utils";
-import './App.less'
+import { textToMorse, morseToText } from "../utils";
 
 function App() {
   const [text, setText] = useState('')
@@ -24,7 +24,7 @@ function App() {
             }}
           />
         </div>
-        <div>
+        <div tw="flex flex-col">
           <button>Play</button>
           <textarea
             placeholder="Kode Morse"

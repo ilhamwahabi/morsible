@@ -1,4 +1,4 @@
-import { invert } from "lodash-es";
+import invert from "lodash/invert";
 
 const charMapper: { [key: string]: string } = {
   'a': '.-',	

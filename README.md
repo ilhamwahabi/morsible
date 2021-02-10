@@ -6,9 +6,9 @@ Built for the sake of `IF4081 - Informatika untuk Komunitas` lectures, also to e
 
 Tech stack:
 
-- `React` (hooks) + `Typescript` with `Vite`
+- `React` (hooks) + `Typescript` with `Next.js`
 - `jotai` for state management
-- `less` for styling
+- `twin.macro` with `emotion` and `Tailwind CSS` for styling
 - `Framer Motion` for animation
 - `react-testing-library` for testing
 - `Splitbee` for analytics
