@@ -15,31 +15,45 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: flex-end;
 
-    textarea {
-      display: block;
+    div {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      resize: none;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 5px;
-      box-sizing: border-box;
-      font-family: "Roboto";
-      letter-spacing: 1px;
+
+      button {
+        margin-bottom: 12px;
+        width: fit-content;
+      }
+
+      textarea {
+        resize: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-family: "Roboto";
+        letter-spacing: 1px;
+      }
     }
 
-    textarea:last-child {
-      margin-top: 16px;
+    div:last-child {
+      margin-top: 20px;
     }
 
     @media (min-width: 721px) {
       flex-direction: row;
 
-      textarea {
+      div {
         width: 47.5%;
+
+        button {
+          margin-bottom: 20px;
+        }
       }
 
-      textarea:last-child {
+      div:last-child {
         margin-top: 0;
       }
     }

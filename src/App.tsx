@@ -13,24 +13,29 @@ function App() {
         Semar
       </header>
       <main className="App__main">
-        <textarea
-          placeholder="Masukkan Teks"
-          value={text}
-          rows={8}
-          onChange={event => {
-            setText(event.target.value)
-            setMorse(textToMorse(event.target.value))
-          }}
-        />
-        <textarea
-          placeholder="Kode Morse"
-          value={morse}
-          rows={8}
-          onChange={event => {
-            setMorse(event.target.value)
-            setText(morseToText(event.target.value))
-          }}
-        />
+        <div>
+          <textarea
+            placeholder="Masukkan Teks"
+            value={text}
+            rows={8}
+            onChange={event => {
+              setText(event.target.value)
+              setMorse(textToMorse(event.target.value))
+            }}
+          />
+        </div>
+        <div>
+          <button>Play</button>
+          <textarea
+            placeholder="Kode Morse"
+            value={morse}
+            rows={8}
+            onChange={event => {
+              setMorse(event.target.value)
+              setText(morseToText(event.target.value))
+            }}
+          />
+        </div>
       </main>
     </div>
   )
