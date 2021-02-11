@@ -42,11 +42,11 @@ function App() {
             placeholder="Masukkan Teks"
             value={text}
             rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider"
+            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase"
             onChange={event => {
               const textInput = event.target.value
 
-              setText(textInput.toUpperCase())
+              setText(textInput)
               setMorse(textToMorse(textInput))
             }}
           />
@@ -62,7 +62,7 @@ function App() {
             placeholder="Kode Morse"
             value={morse}
             rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider"
+            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase"
             onChange={event => {
               const morseInput = event.target.value;
               if (!(/^[\.\- /]*$/g.test(morseInput))) return
