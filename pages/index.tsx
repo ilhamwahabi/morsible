@@ -44,14 +44,16 @@ function App() {
             rows={6}
             tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider"
             onChange={event => {
-              setText(event.target.value.toUpperCase())
-              setMorse(textToMorse(event.target.value))
+              const textInput = event.target.value
+
+              setText(textInput.toUpperCase())
+              setMorse(textToMorse(textInput))
             }}
           />
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
           <button
-            tw="border bg-blue-500 text-white rounded-lg w-min px-8 py-2 mb-4 lg:mb-6"
+            tw="border bg-blue-500 text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6"
             onClick={playMorse}
           >
             Putar
@@ -62,8 +64,11 @@ function App() {
             rows={6}
             tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider"
             onChange={event => {
-              setMorse(event.target.value)
-              setText(morseToText(event.target.value).toUpperCase())
+              const morseInput = event.target.value;
+              if (!(/^[\.\- /]*$/g.test(morseInput))) return
+
+              setMorse(morseInput)
+              setText(morseToText(morseInput).toUpperCase())
             }}
           />
         </div>
