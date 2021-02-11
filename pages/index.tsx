@@ -42,9 +42,9 @@ function App() {
             placeholder="Masukkan Teks"
             value={text}
             rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4"
+            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider"
             onChange={event => {
-              setText(event.target.value)
+              setText(event.target.value.toUpperCase())
               setMorse(textToMorse(event.target.value))
             }}
           />
@@ -60,10 +60,10 @@ function App() {
             placeholder="Kode Morse"
             value={morse}
             rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4"
+            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider"
             onChange={event => {
               setMorse(event.target.value)
-              setText(morseToText(event.target.value))
+              setText(morseToText(event.target.value).toUpperCase())
             }}
           />
         </div>
