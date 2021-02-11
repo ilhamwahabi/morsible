@@ -42,7 +42,7 @@ function App() {
             placeholder="Masukkan Teks"
             value={text}
             rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase"
+            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
             onChange={event => {
               const textInput = event.target.value
 
@@ -53,7 +53,7 @@ function App() {
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
           <button
-            tw="border bg-blue-500 text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6"
+            tw="border bg-blue-500 text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:border-transparent focus:ring-2 focus:ring-blue-300 focus:outline-none"
             onClick={playMorse}
           >
             Putar
@@ -62,7 +62,7 @@ function App() {
             placeholder="Kode Morse"
             value={morse}
             rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase"
+            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
             onChange={event => {
               const morseInput = event.target.value;
               if (!(/^[\.\- /]*$/g.test(morseInput))) return
