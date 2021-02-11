@@ -10,7 +10,7 @@ Tech stack:
 - `jotai` for state management
 - `twin.macro` with `emotion` and `Tailwind CSS` for styling
 - `Framer Motion` for animation
-- `react-testing-library` for testing
+- `@testing-library/react` and `Jest` for testing
 - `Splitbee` for analytics
 - `Vercel` for deployment
 

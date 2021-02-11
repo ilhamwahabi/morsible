@@ -51,7 +51,7 @@ function App() {
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
           <button
-            tw="border bg-blue-500 text-white rounded-lg w-min px-8 py-2 mb-4 lg:mb-8"
+            tw="border bg-blue-500 text-white rounded-lg w-min px-8 py-2 mb-4 lg:mb-6"
             onClick={playMorse}
           >
             Putar
