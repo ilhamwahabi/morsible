@@ -66,7 +66,8 @@ export const textToMorse = (text: string): string => {
   let morseResult = [];
 
   for (const char of text) {
-    if (charMapper[char]) morseResult.push(charMapper[char])
+    const character = char.toLowerCase()
+    if (charMapper[character]) morseResult.push(charMapper[character])
   }
   
   return morseResult.join(' ');
@@ -77,7 +78,8 @@ export const morseToText = (morse: string): string => {
 
   const splitted = morse.split(' ')
   for (let index = 0; index < splitted.length; index++) {
-    if (morseMapper[splitted[index]]) morseResult.push(morseMapper[splitted[index]])
+    const fragment = splitted[index]
+    if (morseMapper[fragment]) morseResult.push(morseMapper[fragment])
   }
   
   return morseResult.join('');
