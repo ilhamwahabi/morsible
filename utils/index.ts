@@ -62,6 +62,29 @@ const charMapper: { [key: string]: string } = {
 
 const morseMapper: { [key: string]: string } = invert(charMapper)
 
+export const getInvalidChar = (text: string): string[] => {
+  let invalidChar = [];
+
+  for (const char of text) {
+    const character = char.toLowerCase()
+    if (!charMapper[character] && !invalidChar.includes(character)) invalidChar.push(character)
+  }
+
+  return invalidChar;
+}
+
+export const getInvalidMorse = (morse: string) => {
+  let invalidMorse = [];
+
+  const splitted = morse.split(' ')
+  for (let index = 0; index < splitted.length; index++) {
+    const fragment = splitted[index]
+    if (!morseMapper[fragment] && fragment !== "" && !invalidMorse.includes(fragment)) invalidMorse.push(fragment)
+  }
+
+  return invalidMorse;
+}
+
 export const textToMorse = (text: string): string => {
   let morseResult = [];
 

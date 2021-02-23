@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import useSound from 'use-sound'
-import 'twin.macro'
+import tw from 'twin.macro'
 
-import { textToMorse, morseToText } from "../utils";
+import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 
 function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -50,6 +50,14 @@ function App() {
               setMorse(textToMorse(textInput))
             }}
           />
+          <span css={[tw`mt-4 text-center`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
+            Karakter { 
+              getInvalidChar(text).map((item, index) => (<>
+                { index > 0 && <span>, </span> }
+                <span tw="text-red-600 font-bold">{item}</span>
+              </>))
+            } tidak memiliki kode morse
+          </span>
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
           <button
@@ -71,6 +79,14 @@ function App() {
               setText(morseToText(morseInput).toUpperCase())
             }}
           />
+          <span css={[tw`mt-4 text-center`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
+            Morse { 
+              getInvalidMorse(morse).map((item, index) => (<>
+                { index > 0 && <span>, </span> }
+                <span tw="text-red-600 font-bold">{item}</span>
+              </>))
+            } tidak memiliki karakter alfabet
+          </span>
         </div>
       </main>
     </div>
