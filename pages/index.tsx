@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import useSound from 'use-sound'
 import tw from 'twin.macro'
+import dynamic from 'next/dynamic'
+const Recorder = dynamic(() => import('../components/Recorder'), { ssr: false })
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 
@@ -38,6 +40,12 @@ function App() {
       </header>
       <main tw="flex flex-col lg:flex-row lg:items-end justify-between mt-8">
         <div tw="flex flex-col lg:w-5/12">
+          <Recorder
+            updateText={(transcript) => {
+              setText(transcript.join('\n'))
+              setMorse(textToMorse(transcript.join('\n')))
+            }}
+          />
           <textarea
             placeholder="Masukkan Teks"
             value={text}

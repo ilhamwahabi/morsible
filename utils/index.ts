@@ -67,7 +67,7 @@ export const getInvalidChar = (text: string): string[] => {
 
   for (const char of text) {
     const character = char.toLowerCase()
-    if (!charMapper[character] && !invalidChar.includes(character)) invalidChar.push(character)
+    if (!charMapper[character] && !invalidChar.includes(character) && character !== '\n') invalidChar.push(character)
   }
 
   return invalidChar;
