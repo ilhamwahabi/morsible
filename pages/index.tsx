@@ -1,58 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import useSound from 'use-sound'
+import React, { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
+
+// this component use client-side library so we should using dynamic import without ssr here
 const Recorder = dynamic(() => import('../components/Recorder'), { ssr: false })
-
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
-
-function timeout(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+import MorsePlayer from '../components/MorsePlayer'
 
 function App() {
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
-
-  const [playDot, dotData] = useSound('/dot.mp3');
-  const [playDash, dashData] = useSound('/dash.mp3');
-
-  const [isPlayingMorse, setIsPlayingMorse] = useState({ status: false })
-
-  const actionClickMorseButton = async () => {
-    if (isPlayingMorse.status) {
-      // HACK: so state inside playMorse function is mutated
-      isPlayingMorse.status = false
-    } else {
-      setIsPlayingMorse({ status: true})
-    }
-  }
-
-  const playMorse = async () => {
-    let charIndex = 0
-    while (charIndex < morse.length && isPlayingMorse.status) {
-      console.log(isPlayingMorse)
-      const char = morse[charIndex]
-
-      if (char === ".") {
-        playDot()
-        await timeout(dotData.duration);
-      } else if (char === '-') {
-        playDash()
-        await timeout(dashData.duration);
-      } else if (char === ' ') {
-        await timeout(250)
-      } else if (char === "/") {
-        await timeout(150)
-      }
-
-      charIndex++
-    }
-
-    setIsPlayingMorse({ status: false })
-  }
-
-  useEffect(() => { if (isPlayingMorse.status) playMorse() }, [isPlayingMorse])
 
   return (
     <div tw="container mx-auto py-8 px-8">
@@ -89,13 +46,7 @@ function App() {
           </span>
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
-          <button
-            tw="border text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:border-transparent focus:ring-2 focus:outline-none"
-            css={[isPlayingMorse.status ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
-            onClick={actionClickMorseButton}
-          >
-            { isPlayingMorse.status ? 'Berhenti' : 'Putar' }
-          </button>
+          <MorsePlayer morse={morse} />
           <textarea
             placeholder="Kode Morse"
             value={morse}
