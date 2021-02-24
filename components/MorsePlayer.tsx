@@ -41,6 +41,9 @@ function MorsePlayer({ morse }) {
     if (isPlayingMorse.status) {
       // HACK: so state inside playMorse function is mutated
       isPlayingMorse.status = false
+
+      if (dotData.isPlaying) dotData.stop()
+      if (dashData.isPlaying) dashData.stop()
     } else {
       setIsPlayingMorse({ status: true})
     }
@@ -48,7 +51,7 @@ function MorsePlayer({ morse }) {
 
   return (
     <button
-      tw="border text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:border-transparent focus:ring-2 focus:outline-none"
+      tw="border text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:(border-transparent ring-2 outline-none)"
       css={[isPlayingMorse.status ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
       onClick={actionClickMorseButton}
     >
