@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useSound from 'use-sound'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
@@ -17,8 +17,23 @@ function App() {
   const [playDot, dotData] = useSound('/dot.mp3');
   const [playDash, dashData] = useSound('/dash.mp3');
 
+  const [isPlayingMorse, setIsPlayingMorse] = useState({ status: false })
+
+  const actionClickMorseButton = async () => {
+    if (isPlayingMorse.status) {
+      // HACK: so state inside playMorse function is mutated
+      isPlayingMorse.status = false
+    } else {
+      setIsPlayingMorse({ status: true})
+    }
+  }
+
   const playMorse = async () => {
-    for (const char of morse) {
+    let charIndex = 0
+    while (charIndex < morse.length && isPlayingMorse.status) {
+      console.log(isPlayingMorse)
+      const char = morse[charIndex]
+
       if (char === ".") {
         playDot()
         await timeout(dotData.duration);
@@ -30,8 +45,14 @@ function App() {
       } else if (char === "/") {
         await timeout(150)
       }
+
+      charIndex++
     }
+
+    setIsPlayingMorse({ status: false })
   }
+
+  useEffect(() => { if (isPlayingMorse.status) playMorse() }, [isPlayingMorse])
 
   return (
     <div tw="container mx-auto py-8 px-8">
@@ -69,10 +90,11 @@ function App() {
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
           <button
-            tw="border bg-blue-500 text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:border-transparent focus:ring-2 focus:ring-blue-300 focus:outline-none"
-            onClick={playMorse}
+            tw="border text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:border-transparent focus:ring-2 focus:outline-none"
+            css={[isPlayingMorse.status ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
+            onClick={actionClickMorseButton}
           >
-            Putar
+            { isPlayingMorse.status ? 'Berhenti' : 'Putar' }
           </button>
           <textarea
             placeholder="Kode Morse"
