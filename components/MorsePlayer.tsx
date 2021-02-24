@@ -6,7 +6,11 @@ function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function MorsePlayer({ morse }) {
+interface IProps {
+  morse: string
+}
+
+function MorsePlayer({ morse }: IProps) {
   const [isPlayingMorse, setIsPlayingMorse] = useState({ status: false })
 
   const [playDot, dotData] = useSound('/dot.mp3');

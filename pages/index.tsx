@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 
-// this component use client-side library so we should using dynamic import without ssr here
-const Recorder = dynamic(() => import('../components/Recorder'), { ssr: false })
+// this component use client-side library so we should using dynamic import with ssr disabled
+const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 import MorsePlayer from '../components/MorsePlayer'
 
@@ -16,9 +16,9 @@ function App() {
       <header>
         <h1 tw="text-4xl">Semar</h1>
       </header>
-      <main tw="flex flex-col lg:flex-row lg:items-end justify-between mt-8">
+      <main tw="flex flex-col lg:flex-row lg:items-end justify-between mt-16">
         <div tw="flex flex-col lg:w-5/12">
-          <Recorder
+          <SpeechRecorder
             updateText={(transcript) => {
               setText(transcript.join('\n'))
               setMorse(textToMorse(transcript.join('\n')))
