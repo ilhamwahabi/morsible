@@ -3,7 +3,10 @@ import splitbee from '@splitbee/web';
 import Head from 'next/head';
 import 'typeface-roboto'
 
-splitbee.init()
+splitbee.init({
+  scriptUrl: "/bee.js",
+  apiUrl: "/_hive",
+})
 
 const App = ({ Component, pageProps }) => (
   <>
