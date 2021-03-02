@@ -17,7 +17,13 @@ Tech stack:
 ## Usage
 
 1. Clone this repo
-2. Install package, `npm install`
-3. Run, `npm run dev`
+2. Get Google API Key from Google Cloud Console then create `.env` file with variables
+
+```
+NEXT_PUBLIC_GOOGLE_API_KEY=xxxxxxxxxx
+```
+
+3. Install package, `npm install`
+4. Run, `npm run dev`
 
 Or open direcly here https://semar.iwgx.io

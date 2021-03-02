@@ -17,7 +17,10 @@ function Recorder({ updateText }: IProps) {
     continuous: true,
     timeout: 10000,
     crossBrowser: true,
-    googleApiKey: "AIzaSyCF8wT4zBN8FuBInmBr9KJA_-XloRqRoGQ",
+    googleApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+    googleCloudRecognitionConfig: {
+      languageCode: 'id-ID'
+    }
   });
 
   if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
