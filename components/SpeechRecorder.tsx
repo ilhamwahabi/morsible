@@ -17,6 +17,9 @@ function Recorder({ updateText }: IProps) {
   } = useSpeechToText({
     continuous: true,
     timeout: 10000,
+    speechRecognitionProperties: {
+      lang: 'id-ID'
+    },
     crossBrowser: true,
     googleApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
     googleCloudRecognitionConfig: {
