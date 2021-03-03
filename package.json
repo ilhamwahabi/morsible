@@ -23,6 +23,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hook-speech-to-text": "^0.4.0",
+    "react-icons": "^4.2.0",
     "typeface-roboto": "^1.1.13",
     "use-sound": "^2.0.1"
   },

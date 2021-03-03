@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import tw from 'twin.macro'
+import { FaPlay, FaStop } from "react-icons/fa";
 
 interface IProps {
   text: string
@@ -8,6 +9,7 @@ interface IProps {
 
 function TextPlayer({ text }: IProps) {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [audio, setAudio] = useState<HTMLAudioElement>(null)
 
   const play = async () => {
     const response = await axios.post(`https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`, {
@@ -25,14 +27,21 @@ function TextPlayer({ text }: IProps) {
       }
     })
 
-    setIsPlaying(true)
     const sound = new Audio("data:audio/wav;base64," + response.data.audioContent);
+    sound.addEventListener('play', () => setIsPlaying(true))
+    sound.addEventListener('pause', () => setIsPlaying(false))
+
+    setAudio(sound)
     await sound.play();
-    sound.addEventListener('ended', () => setIsPlaying(false))
+  }
+
+  const stop = () => {
+    audio.pause()
   }
 
   const actionClickPlayButton = async () => {
     if (!isPlaying) play()
+    else stop()
   }
 
   return (
@@ -41,7 +50,10 @@ function TextPlayer({ text }: IProps) {
       css={[isPlaying ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
       onClick={actionClickPlayButton}
     >
-      { isPlaying ? 'Berhenti' : 'Putar' }
+      { isPlaying
+        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Berhenti</span></div>
+        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">Putar</span></div>
+      }
     </button>
   )
 }
