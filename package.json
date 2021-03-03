@@ -16,6 +16,7 @@
     "@splitbee/web": "^0.2.4",
     "@types/lodash-es": "^4.17.4",
     "@zeit/next-less": "^1.0.1",
+    "axios": "^0.21.1",
     "lodash": "^4.17.20",
     "next": "^10.0.6",
     "next-transpile-modules": "^6.3.0",

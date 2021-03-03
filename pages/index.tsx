@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 import MorsePlayer from '../components/MorsePlayer'
+import TextPlayer from '../components/TextPlayer';
 
 function App() {
   const [text, setText] = useState('')
@@ -18,12 +19,17 @@ function App() {
       </header>
       <main tw="flex flex-col lg:flex-row lg:items-end justify-between mt-16">
         <div tw="flex flex-col lg:w-5/12">
-          <SpeechRecorder
-            updateText={(transcript) => {
-              setText(transcript.join('\n'))
-              setMorse(textToMorse(transcript.join('\n')))
-            }}
-          />
+          <div tw="flex">
+            <SpeechRecorder
+              updateText={(transcript) => {
+                setText(transcript.join('\n'))
+                setMorse(textToMorse(transcript.join('\n')))
+              }}
+            />
+            <div tw="ml-4">
+              <TextPlayer text={text} />
+            </div>
+          </div>
           <textarea
             placeholder="Masukkan Teks"
             value={text}
