@@ -12,7 +12,6 @@
     "@emotion/react": "^11.1.5",
     "@emotion/server": "^11.0.0",
     "@emotion/styled": "^11.1.5",
-    "@google-cloud/speech": "^4.2.0",
     "@splitbee/web": "^0.2.4",
     "@types/lodash-es": "^4.17.4",
     "@zeit/next-less": "^1.0.1",
