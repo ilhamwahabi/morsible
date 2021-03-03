@@ -13,7 +13,7 @@ function App() {
   const [morse, setMorse] = useState('')
 
   return (
-    <div tw="container mx-auto py-8 px-8">
+    <div tw="container mx-auto py-8 px-8 min-h-screen flex flex-col">
       <header>
         <h1 tw="text-4xl">Semar</h1>
       </header>
@@ -76,6 +76,9 @@ function App() {
           </span>
         </div>
       </main>
+      <footer tw="text-center text-gray-500 mt-auto">
+        Semar use International (ITU) Morse Standard
+      </footer>
     </div>
   )
 }
