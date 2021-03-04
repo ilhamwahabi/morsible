@@ -23,7 +23,7 @@ function TextPlayer({ text }: IProps) {
       },
       "voice": {
         "languageCode": "id-ID",
-        "name": "id-ID-Wavenet-D"
+        "name": "id-ID-Wavenet-C"
       }
     })
 
