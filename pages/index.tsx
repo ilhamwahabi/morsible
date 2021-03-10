@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
+import { MdContentCopy } from 'react-icons/md';
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
 const Select = dynamic(() => import("react-select"), { ssr: false });
 import { Emoji } from 'emoji-mart'
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 // this component use client-side library so we should using dynamic import with ssr disabled
@@ -56,18 +59,27 @@ function App() {
                 <TextPlayer text={text} />
               </div>
             </div>
-            <textarea
-              placeholder="Masukkan Teks"
-              value={text}
-              tw="h-4row lg:h-6row border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              css={[getInvalidChar(text).length > 0 && tw`border-red-600 focus:ring-red-500`]}
-              onChange={event => {
-                const textInput = event.target.value
-
-                setText(textInput)
-                setMorse(textToMorse(textInput))
-              }}
-            />
+            <div tw="relative">
+              <textarea
+                placeholder="Masukkan Teks"
+                value={text}
+                tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                css={[getInvalidChar(text).length > 0 && tw`border-red-600 focus:ring-red-500`]}
+                onChange={event => {
+                  const textInput = event.target.value
+                  
+                  setText(textInput)
+                  setMorse(textToMorse(textInput))
+                }}
+              />
+              <div tw="absolute bottom-0 right-0 pl-4 pr-4 pt-4 pb-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
+                <CopyToClipboard text={text}
+                  onCopy={() => toast.success('Teks berhasil disalin ke clipboard')}
+                >
+                  <MdContentCopy size="20" tw="text-gray-700" />
+                </CopyToClipboard>
+              </div>
+            </div>
             <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
               Karakter { 
                 getInvalidChar(text).map((item, index) => (
@@ -84,18 +96,27 @@ function App() {
               <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Morse</h2>
               <MorsePlayer morse={morse} />
             </div>
-            <textarea
-              placeholder="Kode Morse"
-              value={morse}
-              tw="h-4row lg:h-6row border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-              onChange={event => {
-                const morseInput = event.target.value;
-                if (!(/^[\.\- /]*$/g.test(morseInput))) return
-
-                setMorse(morseInput)
-                setText(morseToText(morseInput).toUpperCase())
-              }}
-            />
+            <div tw="relative">
+              <textarea
+                placeholder="Kode Morse"
+                value={morse}
+                tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                onChange={event => {
+                  const morseInput = event.target.value;
+                  if (!(/^[\.\- /]*$/g.test(morseInput))) return
+                  
+                  setMorse(morseInput)
+                  setText(morseToText(morseInput).toUpperCase())
+                }}
+              />
+              <div tw="absolute bottom-0 right-0 pl-4 pr-4 pt-4 pb-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
+                <CopyToClipboard text={morse}
+                  onCopy={() => toast.success('Kode morse berhasil disalin ke clipboard')}
+                >
+                  <MdContentCopy size="20" tw="text-gray-700" />
+                </CopyToClipboard>
+              </div>
+            </div>
             <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
               Morse { 
                 getInvalidMorse(morse).map((item, index) => (
@@ -145,6 +166,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <Toaster position="bottom-center" />
     </div>
   )
 }
