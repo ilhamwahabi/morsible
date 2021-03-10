@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
+import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 
 // this component use client-side library so we should using dynamic import with ssr disabled
-const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
+const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
-import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 
 function App() {
   const [text, setText] = useState('')
@@ -21,81 +21,88 @@ function App() {
           <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
         </div>
       </header>
-      <main tw="container mx-auto py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
-        <div tw="flex flex-col lg:w-5/12">
-          <div tw="flex items-end mb-4 lg:mb-6">
-            <h2 tw="text-3xl mr-auto pb-1 border-b-2 border-black">Teks</h2>
-            <SpeechRecorder
-              updateText={(transcript) => {
-                setText(transcript.join('\n'))
-                setMorse(textToMorse(transcript.join('\n')))
+      <main tw="bg-gray-50">
+        <div tw="container mx-auto py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
+          <div tw="flex flex-col lg:w-5/12">
+            <div tw="flex items-end mb-4 lg:mb-6">
+              <h2 tw="text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Teks</h2>
+              <SpeechRecorder
+                updateText={(transcript) => {
+                  setText(transcript.join('\n'))
+                  setMorse(textToMorse(transcript.join('\n')))
+                }}
+              />
+              <div tw="ml-4">
+                <TextPlayer text={text} />
+              </div>
+            </div>
+            <textarea
+              placeholder="Masukkan Teks"
+              value={text}
+              rows={6}
+              tw="border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              css={[getInvalidChar(text).length > 0 && tw`border-red-600 focus:ring-red-500`]}
+              onChange={event => {
+                const textInput = event.target.value
+
+                setText(textInput)
+                setMorse(textToMorse(textInput))
               }}
             />
-            <div tw="ml-4">
-              <TextPlayer text={text} />
+            <span css={[tw`mt-4 text-center`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
+              Karakter { 
+                getInvalidChar(text).map((item, index) => (
+                  <>
+                    { index > 0 && <span>, </span> }
+                    <span tw="text-red-600 font-bold">{item}</span>
+                  </>
+                ))
+              } tidak memiliki kode morse
+            </span>
+          </div>
+          <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
+            <div tw="flex items-end mb-4 lg:mb-6">
+              <h2 tw="text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Morse</h2>
+              <MorsePlayer morse={morse} />
             </div>
-          </div>
-          <textarea
-            placeholder="Masukkan Teks"
-            value={text}
-            rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            onChange={event => {
-              const textInput = event.target.value
+            <textarea
+              placeholder="Kode Morse"
+              value={morse}
+              rows={6}
+              tw="border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              onChange={event => {
+                const morseInput = event.target.value;
+                if (!(/^[\.\- /]*$/g.test(morseInput))) return
 
-              setText(textInput)
-              setMorse(textToMorse(textInput))
-            }}
-          />
-          <span css={[tw`mt-4 text-center`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
-            Karakter { 
-              getInvalidChar(text).map((item, index) => (<>
-                { index > 0 && <span>, </span> }
-                <span tw="text-red-600 font-bold">{item}</span>
-              </>))
-            } tidak memiliki kode morse
-          </span>
+                setMorse(morseInput)
+                setText(morseToText(morseInput).toUpperCase())
+              }}
+            />
+            <span css={[tw`mt-4 text-center`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
+              Morse { 
+                getInvalidMorse(morse).map((item, index) => (
+                  <>
+                    { index > 0 && <span>, </span> }
+                    <span tw="text-red-600 font-bold">{item}</span>
+                  </>
+                ))
+              } tidak memiliki karakter alfabet
+            </span>
+          </div>
         </div>
-        <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
-          <div tw="flex items-end mb-4 lg:mb-6">
-            <h2 tw="text-3xl mr-auto pb-1 border-b-2 border-black">Morse</h2>
-            <MorsePlayer morse={morse} />
-          </div>
-          <textarea
-            placeholder="Kode Morse"
-            value={morse}
-            rows={6}
-            tw="border border-gray-300 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            onChange={event => {
-              const morseInput = event.target.value;
-              if (!(/^[\.\- /]*$/g.test(morseInput))) return
-
-              setMorse(morseInput)
-              setText(morseToText(morseInput).toUpperCase())
-            }}
-          />
-          <span css={[tw`mt-4 text-center`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
-            Morse { 
-              getInvalidMorse(morse).map((item, index) => (<>
-                { index > 0 && <span>, </span> }
-                <span tw="text-red-600 font-bold">{item}</span>
-              </>))
-            } tidak memiliki karakter alfabet
-          </span>
+        <div tw="container mx-auto py-8 px-8">
+          <p tw="mx-auto w-max">
+            Semar menggunakan {" "}
+            <a
+              href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
+              target="_blank"
+              tw="pb-1 border-b-2 border-gray-800"
+            >
+              <span>standar konvensi ITU</span> 
+            </a>
+          </p>
         </div>
       </main>
-      <div tw="container mx-auto py-8 px-8">
-        <p tw="mx-auto w-max">
-          Semar menggunakan {" "}
-          <a
-            href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
-            target="_blank"
-            tw="pb-1 border-b-2 border-gray-800"
-          >
-            <span>standar konvensi ITU</span> 
-          </a>
-        </p>
-      </div>
       <footer tw="text-center text-white py-12 mt-auto bg-gray-800">
         <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
           <div tw="order-2 mt-12 lg:mt-0">
