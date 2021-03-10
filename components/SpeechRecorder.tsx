@@ -35,7 +35,7 @@ function Recorder({ updateText }: IProps) {
     <div>
       <button
         onClick={isRecording ? stopSpeechToText : startSpeechToText}
-        tw="border  text-white rounded-lg px-6 py-2 mb-4 lg:mb-6 focus:(border-transparent ring-2 outline-none)"
+        tw="border text-white rounded-lg px-6 py-2 focus:(border-transparent ring-2 outline-none)"
         css={[isRecording ? tw`bg-red-500 focus:ring-red-300` : tw`bg-green-500 focus:ring-green-300` ]}
       >
         { 

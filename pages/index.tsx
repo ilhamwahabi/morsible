@@ -22,7 +22,8 @@ function App() {
       </header>
       <main tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
         <div tw="flex flex-col lg:w-5/12">
-          <div tw="flex">
+          <div tw="flex items-end mb-4 lg:mb-6">
+            <h2 tw="text-3xl mr-auto pb-1 border-b-2 border-black">Teks</h2>
             <SpeechRecorder
               updateText={(transcript) => {
                 setText(transcript.join('\n'))
@@ -55,7 +56,10 @@ function App() {
           </span>
         </div>
         <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
-          <MorsePlayer morse={morse} />
+          <div tw="flex items-end mb-4 lg:mb-6">
+            <h2 tw="text-3xl mr-auto pb-1 border-b-2 border-black">Morse</h2>
+            <MorsePlayer morse={morse} />
+          </div>
           <textarea
             placeholder="Kode Morse"
             value={morse}
