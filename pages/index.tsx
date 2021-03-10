@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
 const Select = dynamic(() => import("react-select"), { ssr: false });
+import { Emoji } from 'emoji-mart'
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 // this component use client-side library so we should using dynamic import with ssr disabled
@@ -12,8 +13,8 @@ import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
 
 const options = [
-  { value: 'indonesia', label: 'Indonesia' },
-  { value: 'english', label: 'English' },
+  { value: 'indonesia', label: <div tw="flex items-center"><Emoji emoji='flag-id' set='twitter' size={16} /><span tw="ml-3">Indonesia</span></div> },
+  { value: 'english', label: <div tw="flex items-center"><Emoji emoji='flag-us' set='twitter' size={16} /><span tw="ml-3">English</span></div>  },
 ]
 
 function App() {
