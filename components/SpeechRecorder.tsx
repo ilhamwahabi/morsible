@@ -3,15 +3,11 @@ import useSpeechToText from 'react-hook-speech-to-text';
 import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 
+import { getLanguageCode } from '../utils';
+
 interface IProps {
   language: string,
   updateText: (text: string[]) => void
-}
-
-function getLanguageCode (language: string) {
-  if (language === "indonesia") return "id-ID"
-  else if (language === "english") return "en-US"
-  else return ""
 }
 
 function Recorder({ updateText, language }: IProps) {

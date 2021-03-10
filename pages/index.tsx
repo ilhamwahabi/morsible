@@ -56,7 +56,7 @@ function App() {
                 }}
               />
               <div tw="ml-4">
-                <TextPlayer text={text} />
+                <TextPlayer text={text} language={language.value} />
               </div>
             </div>
             <div tw="relative">
@@ -72,13 +72,13 @@ function App() {
                   setMorse(textToMorse(textInput))
                 }}
               />
-              <div tw="absolute bottom-0 right-0 pl-4 pr-4 pt-4 pb-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
-                <CopyToClipboard text={text}
-                  onCopy={() => toast.success('Teks berhasil disalin ke clipboard')}
-                >
+              <CopyToClipboard text={text}
+                onCopy={() => toast.success('Teks berhasil disalin ke clipboard')}
+              >
+                <div tw="absolute bottom-0 right-0 p-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
                   <MdContentCopy size="20" tw="text-gray-700" />
-                </CopyToClipboard>
-              </div>
+                </div>
+              </CopyToClipboard>
             </div>
             <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
               Karakter { 
@@ -109,13 +109,13 @@ function App() {
                   setText(morseToText(morseInput).toUpperCase())
                 }}
               />
-              <div tw="absolute bottom-0 right-0 pl-4 pr-4 pt-4 pb-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
-                <CopyToClipboard text={morse}
-                  onCopy={() => toast.success('Kode morse berhasil disalin ke clipboard')}
-                >
+              <CopyToClipboard text={morse}
+                onCopy={() => toast.success('Kode morse berhasil disalin ke clipboard')}
+              >
+                <div tw="absolute bottom-0 right-0 p-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
                   <MdContentCopy size="20" tw="text-gray-700" />
-                </CopyToClipboard>
-              </div>
+                </div>
+              </CopyToClipboard>
             </div>
             <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
               Morse { 

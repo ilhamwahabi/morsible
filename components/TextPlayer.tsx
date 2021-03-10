@@ -2,12 +2,14 @@ import axios from 'axios'
 import { useState } from 'react'
 import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
+import { getLanguageCode } from '../utils';
 
 interface IProps {
   text: string
+  language: string
 }
 
-function TextPlayer({ text }: IProps) {
+function TextPlayer({ text, language }: IProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [audio, setAudio] = useState<HTMLAudioElement>(null)
 
@@ -22,8 +24,8 @@ function TextPlayer({ text }: IProps) {
         "text": text
       },
       "voice": {
-        "languageCode": "id-ID",
-        "name": "id-ID-Wavenet-C"
+        "languageCode": getLanguageCode(language),
+        "name": `${getLanguageCode(language)}-Wavenet-C`
       }
     })
 
