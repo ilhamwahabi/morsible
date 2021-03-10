@@ -13,11 +13,14 @@ function App() {
   const [morse, setMorse] = useState('')
 
   return (
-    <div tw="container mx-auto py-8 px-8 min-h-screen flex flex-col">
-      <header>
-        <h1 tw="text-4xl">Semar</h1>
+    <div tw="min-h-screen flex flex-col">
+      <header tw="bg-blue-500 text-white">
+        <div tw="container mx-auto py-8 px-8">
+          <h1 tw="text-4xl lg:text-5xl">Semar</h1>
+          <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
+        </div>
       </header>
-      <main tw="flex flex-col lg:flex-row lg:items-end justify-between mt-16">
+      <main tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
         <div tw="flex flex-col lg:w-5/12">
           <div tw="flex">
             <SpeechRecorder
