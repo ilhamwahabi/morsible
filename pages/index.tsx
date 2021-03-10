@@ -2,23 +2,41 @@ import React, { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
+// handle issue: https://github.com/JedWatson/react-select/issues/3590
+const Select = dynamic(() => import("react-select"), { ssr: false });
 
-// this component use client-side library so we should using dynamic import with ssr disabled
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
+// this component use client-side library so we should using dynamic import with ssr disabled
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
 
+const options = [
+  { value: 'indonesia', label: 'Indonesia' },
+  { value: 'english', label: 'English' },
+]
+
 function App() {
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
+  const [language, setLanguage] = useState(options[0])
 
   return (
     <div tw="min-h-screen flex flex-col">
-      <header tw="bg-blue-500 text-white">
-        <div tw="container mx-auto py-8 px-8">
-          <h1 tw="text-4xl lg:text-5xl">Semar</h1>
-          <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
+      <header tw="bg-blue-500">
+        <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
+          <div tw="text-white">
+            <h1 tw="text-4xl lg:text-5xl">Semar</h1>
+            <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
+          </div>
+          <div tw="w-48 mt-6 lg:mt-0">
+            <Select
+              options={options}
+              value={language}
+              onChange={setLanguage}
+              isSearchable={false}
+            />
+          </div>
         </div>
       </header>
       <main tw="bg-gray-50 flex-1 flex flex-col justify-center">
@@ -90,7 +108,7 @@ function App() {
             </span>
           </div>
         </div>
-        <div tw="container mx-auto pb-8 px-8">
+        <div tw="container mx-auto pb-8 lg:pb-10 px-8">
           <p tw="mx-auto w-max">
             Semar menggunakan {" "}
             <a

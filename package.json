@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.1.5",
     "@splitbee/web": "^0.2.4",
     "@types/lodash-es": "^4.17.4",
+    "@types/react-select": "^4.0.13",
     "axios": "^0.21.1",
     "lodash": "^4.17.20",
     "next": "^10.0.6",
@@ -22,6 +23,7 @@
     "react-dom": "^17.0.1",
     "react-hook-speech-to-text": "^0.4.0",
     "react-icons": "^4.2.0",
+    "react-select": "^4.2.1",
     "typeface-roboto": "^1.1.13",
     "use-sound": "^2.0.1"
   },
