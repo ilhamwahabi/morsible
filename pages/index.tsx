@@ -27,8 +27,8 @@ function App() {
       <header tw="bg-blue-500">
         <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
           <div tw="text-white">
-            <h1 tw="text-4xl lg:text-5xl">Semar</h1>
-            <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
+            <h1 tw="text-4xl lg:text-5xl tracking-wide">Semar</h1>
+            <p tw="lg:text-lg mt-2 tracking-wide">fast and reliable morse decoder</p>
           </div>
           <div tw="w-48 mt-6 lg:mt-0">
             <Select
@@ -140,7 +140,7 @@ function App() {
             </div>
           </div>
           <div tw="order-1 lg:order-2">
-            <p tw="mt-2">Sponsor this project</p>
+            <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">Sponsor this project</p>
             <div tw="mt-4 lg:mt-5">
               <p>Your logo with link will be added here</p>
             </div>
