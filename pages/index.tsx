@@ -59,8 +59,7 @@ function App() {
             <textarea
               placeholder="Masukkan Teks"
               value={text}
-              rows={6}
-              tw="border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              tw="h-4row lg:h-6row border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
               css={[getInvalidChar(text).length > 0 && tw`border-red-600 focus:ring-red-500`]}
               onChange={event => {
                 const textInput = event.target.value
@@ -69,7 +68,7 @@ function App() {
                 setMorse(textToMorse(textInput))
               }}
             />
-            <span css={[tw`mt-4 text-center`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
+            <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
               Karakter { 
                 getInvalidChar(text).map((item, index) => (
                   <>
@@ -80,7 +79,7 @@ function App() {
               } tidak memiliki kode morse
             </span>
           </div>
-          <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
+          <div tw="flex flex-col lg:w-5/12 mt-8 lg:mt-0">
             <div tw="flex items-end mb-4 lg:mb-6">
               <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Morse</h2>
               <MorsePlayer morse={morse} />
@@ -88,8 +87,7 @@ function App() {
             <textarea
               placeholder="Kode Morse"
               value={morse}
-              rows={6}
-              tw="border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              tw="h-4row lg:h-6row border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
               onChange={event => {
                 const morseInput = event.target.value;
                 if (!(/^[\.\- /]*$/g.test(morseInput))) return
@@ -98,7 +96,7 @@ function App() {
                 setText(morseToText(morseInput).toUpperCase())
               }}
             />
-            <span css={[tw`mt-4 text-center`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
+            <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
               Morse { 
                 getInvalidMorse(morse).map((item, index) => (
                   <>
