@@ -7,6 +7,7 @@ const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { s
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
+import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 
 function App() {
   const [text, setText] = useState('')
@@ -20,7 +21,7 @@ function App() {
           <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
         </div>
       </header>
-      <main tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
+      <main tw="container mx-auto py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
         <div tw="flex flex-col lg:w-5/12">
           <div tw="flex items-end mb-4 lg:mb-6">
             <h2 tw="text-3xl mr-auto pb-1 border-b-2 border-black">Teks</h2>
@@ -83,8 +84,41 @@ function App() {
           </span>
         </div>
       </main>
-      <footer tw="text-center text-gray-500 mt-auto">
-        Semar use International (ITU) Morse Standard
+      <div tw="container mx-auto py-8 px-8">
+        <p tw="mx-auto w-max">
+          Semar menggunakan {" "}
+          <a
+            href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
+            target="_blank"
+            tw="pb-1 border-b-2 border-gray-800"
+          >
+            <span>standar konvensi ITU</span> 
+          </a>
+        </p>
+      </div>
+      <footer tw="text-center text-white py-12 mt-auto bg-gray-800">
+        <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
+          <div tw="order-2 mt-12 lg:mt-0">
+            <p tw="mt-2">&copy; Ilham Wahabi 2021. All Rights Reserved.</p>
+            <div tw="mt-6 flex justify-center">
+              <a href="https://iwgx.io" target="_blank">
+                <FaGlobe size="24" />
+              </a>
+              <a href="https://twitter.com/ilhamwahabigx" target="_blank" tw="ml-8">
+                <FaTwitter size="24" />
+              </a>
+              <a href="https://github.com/iwgx" target="_blank" tw="ml-8">
+                <FaGithub size="24" />
+              </a>
+            </div>
+          </div>
+          <div tw="order-1 lg:order-2">
+            <p tw="mt-2">Sponsor this project</p>
+            <div tw="mt-5">
+              <p>Your logo with link will be added here</p>
+            </div>
+          </div>
+        </div>
       </footer>
     </div>
   )
