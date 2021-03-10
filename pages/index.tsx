@@ -46,6 +46,7 @@ function App() {
             <div tw="flex items-end mb-4 lg:mb-6">
               <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Teks</h2>
               <SpeechRecorder
+                language={language.value}
                 updateText={(transcript) => {
                   setText(transcript.join('\n'))
                   setMorse(textToMorse(transcript.join('\n')))

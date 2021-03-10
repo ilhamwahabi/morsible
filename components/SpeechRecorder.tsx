@@ -4,10 +4,17 @@ import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 
 interface IProps {
+  language: string,
   updateText: (text: string[]) => void
 }
 
-function Recorder({ updateText }: IProps) {
+function getLanguageCode (language: string) {
+  if (language === "indonesia") return "id-ID"
+  else if (language === "english") return "en-US"
+  else return ""
+}
+
+function Recorder({ updateText, language }: IProps) {
   const {
     error,
     isRecording,
@@ -18,12 +25,12 @@ function Recorder({ updateText }: IProps) {
     continuous: true,
     timeout: 10000,
     speechRecognitionProperties: {
-      lang: 'id-ID'
+      lang: getLanguageCode(language)
     },
     crossBrowser: true,
     googleApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
     googleCloudRecognitionConfig: {
-      languageCode: 'id-ID'
+      languageCode: getLanguageCode(language)
     }
   });
 
