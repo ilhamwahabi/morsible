@@ -21,11 +21,11 @@ function App() {
           <p tw="lg:text-lg mt-2">fast and reliable morse decoder</p>
         </div>
       </header>
-      <main tw="bg-gray-50">
-        <div tw="container mx-auto py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
+      <main tw="bg-gray-50 flex-1 flex flex-col justify-center">
+        <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
           <div tw="flex flex-col lg:w-5/12">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <h2 tw="text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Teks</h2>
+              <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Teks</h2>
               <SpeechRecorder
                 updateText={(transcript) => {
                   setText(transcript.join('\n'))
@@ -62,7 +62,7 @@ function App() {
           </div>
           <div tw="flex flex-col lg:w-5/12 mt-10 lg:mt-0">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <h2 tw="text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Morse</h2>
+              <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Morse</h2>
               <MorsePlayer morse={morse} />
             </div>
             <textarea
@@ -90,7 +90,7 @@ function App() {
             </span>
           </div>
         </div>
-        <div tw="container mx-auto py-8 px-8">
+        <div tw="container mx-auto pb-8 px-8">
           <p tw="mx-auto w-max">
             Semar menggunakan {" "}
             <a
@@ -121,7 +121,7 @@ function App() {
           </div>
           <div tw="order-1 lg:order-2">
             <p tw="mt-2">Sponsor this project</p>
-            <div tw="mt-5">
+            <div tw="mt-4 lg:mt-5">
               <p>Your logo with link will be added here</p>
             </div>
           </div>

@@ -47,7 +47,7 @@ function TextPlayer({ text }: IProps) {
   return (
     <button
       disabled={text === ""}
-      tw="disabled:(opacity-50 cursor-not-allowed) transition-opacity duration-300 border text-white rounded-lg w-min px-6 py-2 focus:(border-transparent ring-2 outline-none)"
+      tw="text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-opacity duration-300 border text-white rounded-lg w-min px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
       css={[isPlaying ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
       onClick={actionClickPlayButton}
     >
