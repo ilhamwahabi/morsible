@@ -55,6 +55,7 @@ function App() {
                 else if (value.value === "en") { router.push('/', null, { locale: 'en' })}
               }}
               isSearchable={false}
+              aria-label="Languages"
             />
           </div>
         </div>
