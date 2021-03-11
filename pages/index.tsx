@@ -139,6 +139,7 @@ function App() {
             <a
               href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
               target="_blank"
+              rel="noopener"
               tw="pb-1 border-b-2 border-gray-800"
             >
               <span>{ t('disclaimer.link') }</span> 
@@ -151,13 +152,13 @@ function App() {
           <div tw="order-2 mt-12 lg:mt-0">
             <p tw="mt-2">&copy; Ilham Wahabi 2021. { t('footer.license') }</p>
             <div tw="mt-6 flex justify-center">
-              <a href="https://iwgx.io" target="_blank">
+              <a href="https://iwgx.io" target="_blank" rel="noopener">
                 <FaGlobe size="24" />
               </a>
-              <a href="https://twitter.com/ilhamwahabigx" target="_blank" tw="ml-8">
+              <a href="https://twitter.com/ilhamwahabigx" target="_blank" rel="noopener" tw="ml-8">
                 <FaTwitter size="24" />
               </a>
-              <a href="https://github.com/iwgx" target="_blank" tw="ml-8">
+              <a href="https://github.com/iwgx" target="_blank" rel="noopener" tw="ml-8">
                 <FaGithub size="24" />
               </a>
             </div>
