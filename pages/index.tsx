@@ -42,8 +42,8 @@ function App() {
               options={options}
               value={options[router.locale === "en" ? 1 : 0]}
               onChange={(value: any) => {
-                if (value.value === "id") router.push('/id')  
-                else if (value.value === "en") { router.push('/en') }
+                if (value.value === "id") router.push('/', null, { locale: 'id' })  
+                else if (value.value === "en") { router.push('/', null, { locale: 'en' })}
               }}
               isSearchable={false}
             />
