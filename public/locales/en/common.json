@@ -1,3 +1,27 @@
 {
-  "subtitle": "fast and reliable morse decoder"
+  "subtitle": "fast and reliable morse decoder",
+  "text": {
+    "title": "Text",
+    "placeholder": "Any text"
+  },
+  "morse": {
+    "title": "Morse",
+    "placeholder": "Morse code"
+  },
+  "button": {
+    "speak": "Speak",
+    "play": "Play",
+    "stop": "Stop"
+  },
+  "disclaimer": {
+    "pre": "Semar use ",
+    "link": "ITU convention standard"
+  },
+  "footer": {
+    "license": "MIT Licensed.",
+    "sponsor": {
+      "main": "Buy me a coffee",
+      "caption": "To help me maintain this project"
+    }
+  }
 }

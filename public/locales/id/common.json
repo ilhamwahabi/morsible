@@ -1,3 +1,28 @@
 {
-  "subtitle": "pembaca morse yang cepat dan handal"
+  "subtitle": "pembaca morse yang cepat dan handal",
+  "text": {
+    "title": "Text",
+    "placeholder": "Masukkan teks"
+  },
+  "morse": {
+    "title": "Morse",
+    "placeholder": "Kode morse"
+  },
+  "button": {
+    "speak": "Bicara",
+    "play": "Putar",
+    "stop": "Berhenti"
+
+  },
+  "disclaimer": {
+    "pre": "Semar menggunakan ",
+    "link": "standar konvensi ITU"
+  },
+  "footer": {
+    "license": "Licensi MIT.",
+    "sponsor": {
+      "main": "Belikan saya kopi",
+      "caption": "Untuk membantu saya memelihara proyek ini"
+    }
+  }
 }

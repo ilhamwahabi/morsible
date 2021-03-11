@@ -26,7 +26,6 @@ function App() {
 
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
-  const [language, setLanguage] = useState(options[router.locale === "en" ? 1 : 0])
 
   const { t } = useTranslation('common')
 
@@ -55,21 +54,23 @@ function App() {
         <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
           <div tw="flex flex-col lg:w-5/12">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Teks</h2>
+              <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">
+                { t('text.title') }
+              </h2>
               <SpeechRecorder
-                language={language.value}
+                language={router.locale}
                 updateText={(transcript) => {
                   setText(transcript.join('\n'))
                   setMorse(textToMorse(transcript.join('\n')))
                 }}
               />
               <div tw="ml-4">
-                <TextPlayer text={text} language={language.value} />
+                <TextPlayer text={text} language={router.locale} />
               </div>
             </div>
             <div tw="relative">
               <textarea
-                placeholder="Masukkan Teks"
+                placeholder={t('text.placeholder')}
                 value={text}
                 tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 css={[getInvalidChar(text).length > 0 && tw`border-red-600 focus:ring-red-500`]}
@@ -99,7 +100,7 @@ function App() {
             </div>
             <div tw="relative">
               <textarea
-                placeholder="Kode Morse"
+                placeholder={t('morse.placeholder')}
                 value={morse}
                 tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 onChange={event => {
@@ -125,13 +126,13 @@ function App() {
         </div>
         <div tw="container mx-auto pb-8 lg:pb-10 px-8">
           <p tw="mx-auto w-max">
-            Semar menggunakan {" "}
+            { t('disclaimer.pre') }
             <a
               href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
               target="_blank"
               tw="pb-1 border-b-2 border-gray-800"
             >
-              <span>standar konvensi ITU</span> 
+              <span>{ t('disclaimer.link') }</span> 
             </a>
           </p>
         </div>
@@ -139,7 +140,7 @@ function App() {
       <footer tw="text-center text-white py-12 mt-auto bg-gray-800">
         <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
           <div tw="order-2 mt-12 lg:mt-0">
-            <p tw="mt-2">&copy; Ilham Wahabi 2021. All Rights Reserved.</p>
+            <p tw="mt-2">&copy; Ilham Wahabi 2021. { t('footer.license') }</p>
             <div tw="mt-6 flex justify-center">
               <a href="https://iwgx.io" target="_blank">
                 <FaGlobe size="24" />
@@ -153,10 +154,12 @@ function App() {
             </div>
           </div>
           <div tw="order-1 lg:order-2">
-            <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">Sponsor this project</p>
-            <div tw="mt-4 lg:mt-5">
-              <p>Your logo with link will be added here</p>
-            </div>
+            <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">
+              { t('footer.sponsor.main') }
+            </p>
+            <p tw="mt-4 lg:mt-5">
+              { t('footer.sponsor.caption') }
+            </p>
           </div>
         </div>
       </footer>

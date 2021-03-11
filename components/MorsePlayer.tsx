@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 import useSound from 'use-sound'
 import { FaPlay, FaStop } from "react-icons/fa";
+import { useTranslation } from 'next-i18next';
 
 function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -16,6 +17,8 @@ function MorsePlayer({ morse }: IProps) {
 
   const [playDot, dotData] = useSound('/dot.mp3');
   const [playDash, dashData] = useSound('/dash.mp3');
+
+  const { t } = useTranslation('common')
 
   const play = async () => {
     let charIndex = 0
@@ -62,8 +65,8 @@ function MorsePlayer({ morse }: IProps) {
       onClick={actionClickPlayButton}
     >
       { isPlaying.status
-        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Berhenti</span></div>
-        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">Putar</span></div>
+        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">{ t('button.stop') }</span></div>
+        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">{ t('button.play') }</span></div>
       }
     </button>
   )
