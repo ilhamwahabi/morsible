@@ -57,7 +57,8 @@ function TextPlayer({ text, language }: IProps) {
       css={[isPlaying ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
       onClick={actionClickPlayButton}
     >
-      { isPlaying
+      { 
+        isPlaying
         ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">{ t('button.stop') }</span></div>
         : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">{ t('button.play') }</span></div>
       }

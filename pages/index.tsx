@@ -16,9 +16,18 @@ import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
 import { useRouter } from 'next/dist/client/router';
 
+function LocaleOption({ countryCode, label }) {
+  return (
+    <div tw="flex items-center">
+      <Emoji emoji={`flag-${countryCode}`} set='twitter' size={16} />
+      <span tw="ml-3">{ label }</span>
+    </div>
+  )
+}
+
 const options = [
-  { value: 'id', label: <div tw="flex items-center"><Emoji emoji='flag-id' set='twitter' size={16} /><span tw="ml-3">Indonesia</span></div> },
-  { value: 'en', label: <div tw="flex items-center"><Emoji emoji='flag-us' set='twitter' size={16} /><span tw="ml-3">English</span></div>  },
+  { value: 'id', label: <LocaleOption label="Indonesia" countryCode="id" /> },
+  { value: 'en', label: <LocaleOption label="English" countryCode="us" />  },
 ]
 
 function App() {

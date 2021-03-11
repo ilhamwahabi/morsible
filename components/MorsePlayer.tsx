@@ -64,7 +64,8 @@ function MorsePlayer({ morse }: IProps) {
       css={[isPlaying.status ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
       onClick={actionClickPlayButton}
     >
-      { isPlaying.status
+      { 
+        isPlaying.status
         ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">{ t('button.stop') }</span></div>
         : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">{ t('button.play') }</span></div>
       }
