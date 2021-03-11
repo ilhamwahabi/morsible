@@ -8,12 +8,15 @@ const Select = dynamic(() => import("react-select"), { ssr: false });
 import { Emoji } from 'emoji-mart'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
 // this component use client-side library so we should using dynamic import with ssr disabled
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
+import { useRouter } from 'next/dist/client/router';
 
 const options = [
   { value: 'indonesia', label: <div tw="flex items-center"><Emoji emoji='flag-id' set='twitter' size={16} /><span tw="ml-3">Indonesia</span></div> },
@@ -21,9 +24,13 @@ const options = [
 ]
 
 function App() {
+  const router = useRouter()
+
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
-  const [language, setLanguage] = useState(options[0])
+  const [language, setLanguage] = useState(options[router.locale === "en" ? 1 : 0])
+
+  const { t } = useTranslation('common')
 
   return (
     <div tw="min-h-screen flex flex-col">
@@ -31,13 +38,16 @@ function App() {
         <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
           <div tw="text-white">
             <h1 tw="text-4xl lg:text-5xl tracking-wide">Semar</h1>
-            <p tw="lg:text-lg mt-2 tracking-wide">fast and reliable morse decoder</p>
+            <p tw="lg:text-lg mt-2 tracking-wide">{ t('subtitle') }</p>
           </div>
           <div tw="w-48 mt-6 lg:mt-0">
             <Select
               options={options}
-              value={language}
-              onChange={setLanguage}
+              value={options[router.locale === "en" ? 1 : 0]}
+              onChange={(value: any) => {
+                if (value.value === "indonesia") router.push('/id')  
+                else if (value.value === "english") { router.push('/en') }
+              }}
               isSearchable={false}
             />
           </div>
@@ -170,5 +180,11 @@ function App() {
     </div>
   )
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...await serverSideTranslations(locale, ['common']),
+  }
+})
 
 export default App

@@ -2,6 +2,8 @@ import { GlobalStyles } from 'twin.macro'
 import splitbee from '@splitbee/web';
 import Head from 'next/head';
 import 'typeface-roboto'
+import { appWithTranslation } from 'next-i18next'
+
 import '../index.css'
 
 splitbee.init({
@@ -22,4 +24,4 @@ const App = ({ Component, pageProps }) => (
   </>
 )
 
-export default App
+export default appWithTranslation(App)
