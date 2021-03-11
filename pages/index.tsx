@@ -63,9 +63,9 @@ function App() {
         <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
           <div tw="flex flex-col lg:w-5/12">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">
+              <label htmlFor="text" tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">
                 { t('text.title') }
-              </h2>
+              </label>
               <SpeechRecorder
                 language={router.locale}
                 updateText={(transcript) => {
@@ -79,6 +79,7 @@ function App() {
             </div>
             <div tw="relative">
               <textarea
+                id="text"
                 placeholder={t('text.placeholder')}
                 value={text}
                 tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
@@ -104,11 +105,14 @@ function App() {
           </div>
           <div tw="flex flex-col lg:w-5/12 mt-8 lg:mt-0">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <h2 tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">Morse</h2>
+              <label htmlFor="morse" tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">
+                { t('morse.title') }
+              </label>
               <MorsePlayer morse={morse} />
             </div>
             <div tw="relative">
               <textarea
+                id="morse"
                 placeholder={t('morse.placeholder')}
                 value={morse}
                 tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
