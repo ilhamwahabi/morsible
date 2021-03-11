@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
-import { MdContentCopy } from 'react-icons/md';
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
 const Select = dynamic(() => import("react-select"), { ssr: false });
 import { Emoji } from 'emoji-mart'
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import toast, { Toaster } from 'react-hot-toast';
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -19,8 +17,8 @@ import TextPlayer from '../components/TextPlayer';
 import { useRouter } from 'next/dist/client/router';
 
 const options = [
-  { value: 'indonesia', label: <div tw="flex items-center"><Emoji emoji='flag-id' set='twitter' size={16} /><span tw="ml-3">Indonesia</span></div> },
-  { value: 'english', label: <div tw="flex items-center"><Emoji emoji='flag-us' set='twitter' size={16} /><span tw="ml-3">English</span></div>  },
+  { value: 'id', label: <div tw="flex items-center"><Emoji emoji='flag-id' set='twitter' size={16} /><span tw="ml-3">Indonesia</span></div> },
+  { value: 'en', label: <div tw="flex items-center"><Emoji emoji='flag-us' set='twitter' size={16} /><span tw="ml-3">English</span></div>  },
 ]
 
 function App() {
@@ -45,8 +43,8 @@ function App() {
               options={options}
               value={options[router.locale === "en" ? 1 : 0]}
               onChange={(value: any) => {
-                if (value.value === "indonesia") router.push('/id')  
-                else if (value.value === "english") { router.push('/en') }
+                if (value.value === "id") router.push('/id')  
+                else if (value.value === "en") { router.push('/en') }
               }}
               isSearchable={false}
             />
@@ -82,13 +80,6 @@ function App() {
                   setMorse(textToMorse(textInput))
                 }}
               />
-              <CopyToClipboard text={text}
-                onCopy={() => toast.success('Teks berhasil disalin ke clipboard')}
-              >
-                <div tw="absolute bottom-0 right-0 p-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
-                  <MdContentCopy size="20" tw="text-gray-700" />
-                </div>
-              </CopyToClipboard>
             </div>
             <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
               Karakter { 
@@ -113,19 +104,12 @@ function App() {
                 tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 onChange={event => {
                   const morseInput = event.target.value;
-                  if (!(/^[\.\- /]*$/g.test(morseInput))) return
+                  if (!(/^[\.\- /]*$/g.test(morseInput))) return toast.error("Karakter tidak valid")
                   
                   setMorse(morseInput)
                   setText(morseToText(morseInput).toUpperCase())
                 }}
               />
-              <CopyToClipboard text={morse}
-                onCopy={() => toast.success('Kode morse berhasil disalin ke clipboard')}
-              >
-                <div tw="absolute bottom-0 right-0 p-4 mr-5 mb-3 lg:mb-5 cursor-pointer bg-white rounded-full">
-                  <MdContentCopy size="20" tw="text-gray-700" />
-                </div>
-              </CopyToClipboard>
             </div>
             <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
               Morse { 

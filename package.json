@@ -22,7 +22,6 @@
     "next-i18next": "^8.1.1",
     "next-transpile-modules": "^6.3.0",
     "react": "^17.0.1",
-    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.1",
     "react-hook-speech-to-text": "^0.4.0",
     "react-hot-toast": "^1.0.2",
