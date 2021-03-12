@@ -170,7 +170,13 @@ function App() {
           </div>
           <div tw="order-1 lg:order-2">
             <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">
-              { t('footer.sponsor.main') }
+              <a
+                href={router.locale === "en" ? "https://ko-fi.com/ilhamwahabi" : "https://trakteer.id/ilhamwahabi"}
+                target="_blank"
+                rel="noopener"
+              >
+                { t('footer.sponsor.main') }
+              </a>
             </p>
             <p tw="mt-4 lg:mt-5">
               { t('footer.sponsor.caption') }
