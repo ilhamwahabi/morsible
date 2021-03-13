@@ -44,6 +44,10 @@ const App = ({ Component, pageProps }) => (
 
       <meta property='og:type' content='website' />
       <meta property='og:site_name' content='iwgx' />
+
+      <link rel="manifest" href="/manifest.json" />
+      <meta name='theme-color' content='#f9fafb' />
+      <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-touch-icon-180x180.png' />
     </Head>
     <GlobalStyles />
     <Component {...pageProps} />
