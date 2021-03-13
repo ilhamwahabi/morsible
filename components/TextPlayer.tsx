@@ -3,6 +3,7 @@ import { useState } from 'react'
 import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
 import { useTranslation } from 'next-i18next';
+import toast from 'react-hot-toast';
 
 import { getLanguageCode } from '../utils';
 
@@ -18,27 +19,31 @@ function TextPlayer({ text, language }: IProps) {
   const { t } = useTranslation('common')
 
   const play = async () => {
-    const response = await axios.post(`https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`, {
-      "audioConfig": {
-        "audioEncoding": "LINEAR16",
-        "pitch": 0,
-        "speakingRate": 1
-      },
-      "input": {
-        "text": text
-      },
-      "voice": {
-        "languageCode": getLanguageCode(language),
-        "name": `${getLanguageCode(language)}-Wavenet-C`
-      }
-    })
-
-    const sound = new Audio("data:audio/wav;base64," + response.data.audioContent);
-    sound.addEventListener('play', () => setIsPlaying(true))
-    sound.addEventListener('pause', () => setIsPlaying(false))
-
-    setAudio(sound)
-    await sound.play();
+    try {
+      const response = await axios.post(`https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`, {
+        "audioConfig": {
+          "audioEncoding": "LINEAR16",
+          "pitch": 0,
+          "speakingRate": 1
+        },
+        "input": {
+          "text": text
+        },
+        "voice": {
+          "languageCode": getLanguageCode(language),
+          "name": `${getLanguageCode(language)}-Wavenet-C`
+        }
+      })
+  
+      const sound = new Audio("data:audio/wav;base64," + response.data.audioContent);
+      sound.addEventListener('play', () => setIsPlaying(true))
+      sound.addEventListener('pause', () => setIsPlaying(false))
+  
+      setAudio(sound)
+      await sound.play();
+    } catch (error) {
+      toast.error(`${error}`)
+    }
   }
 
   const stop = () => {
