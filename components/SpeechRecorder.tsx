@@ -3,6 +3,7 @@ import useSpeechToText from 'react-hook-speech-to-text';
 import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 import { useTranslation } from 'next-i18next';
+import toast from 'react-hot-toast';
 
 import { getLanguageCode } from '../utils';
 
@@ -33,7 +34,7 @@ function Recorder({ updateText, language }: IProps) {
 
   const { t } = useTranslation('common')
 
-  if (error) return <p>Web Speech API is not available in this browser 🤷‍</p>;
+  if (error) toast.error(`${error}`)
 
   useEffect(() => { updateText(results) }, [results])
 
