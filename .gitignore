@@ -6,3 +6,6 @@ dist-ssr
 .next
 
 .env
+
+sw.*
+workbox*

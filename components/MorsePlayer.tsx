@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import tw from 'twin.macro'
 import useSound from 'use-sound'
 import { FaPlay, FaStop } from "react-icons/fa";
+import { useTranslation } from 'next-i18next';
 
 function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -16,6 +17,8 @@ function MorsePlayer({ morse }: IProps) {
 
   const [playDot, dotData] = useSound('/dot.mp3');
   const [playDash, dashData] = useSound('/dash.mp3');
+
+  const { t } = useTranslation('common')
 
   const play = async () => {
     let charIndex = 0
@@ -57,13 +60,14 @@ function MorsePlayer({ morse }: IProps) {
   return (
     <button
       disabled={morse === ""}
-      tw="disabled:(opacity-50 cursor-not-allowed) transition-opacity duration-300 border text-white rounded-lg w-min px-6 py-2 mb-4 lg:mb-6 focus:(border-transparent ring-2 outline-none)"
+      tw="text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-opacity duration-300 border text-white rounded-lg w-min px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
       css={[isPlaying.status ? tw`bg-red-500 focus:ring-red-300` : tw`bg-blue-500 focus:ring-blue-300`]}
       onClick={actionClickPlayButton}
     >
-      { isPlaying.status
-        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Berhenti</span></div>
-        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">Putar</span></div>
+      { 
+        isPlaying.status
+        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">{ t('button.stop') }</span></div>
+        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">{ t('button.play') }</span></div>
       }
     </button>
   )

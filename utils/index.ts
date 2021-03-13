@@ -107,3 +107,9 @@ export const morseToText = (morse: string): string => {
   
   return morseResult.join('');
 }
+
+export function getLanguageCode (language: string) {
+  if (language === "id") return "id-ID"
+  else if (language === "en") return "en-US"
+  else return ""
+}
