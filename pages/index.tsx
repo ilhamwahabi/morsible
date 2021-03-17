@@ -140,13 +140,13 @@ function App() {
           <div tw="order-2 mt-12 lg:mt-0">
             <p tw="mt-2 tracking-wide">&copy; Ilham Wahabi 2021. { t('footer.license') }</p>
             <div tw="mt-6 flex justify-center">
-              <a href="https://iwgx.io" target="_blank" rel="noopener" aria-label="Website">
+              <a href="https://iwgx.io" target="_blank" rel="noopener" tw="hover:(opacity-60) transition-opacity" aria-label="Website">
                 <FaGlobe size="24" />
               </a>
-              <a href="https://twitter.com/ilhamwahabigx" target="_blank" rel="noopener" tw="ml-8" aria-label="Twitter">
+              <a href="https://twitter.com/ilhamwahabigx" target="_blank" rel="noopener" tw="ml-8 hover:(opacity-60) transition-opacity" aria-label="Twitter">
                 <FaTwitter size="24" />
               </a>
-              <a href="https://github.com/iwgx" target="_blank" rel="noopener" tw="ml-8" aria-label="Github">
+              <a href="https://github.com/iwgx" target="_blank" rel="noopener" tw="ml-8 hover:(opacity-60) transition-opacity" aria-label="Github">
                 <FaGithub size="24" />
               </a>
             </div>
