@@ -16,6 +16,7 @@ const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { s
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
 import TextField from '../components/TextField';
+import InvalidNotice from '../components/InvalidNotice';
 
 function LocaleOption({ countryCode, label }) {
   return (
@@ -91,16 +92,10 @@ function App() {
                 }}
               />
             </div>
-            <span css={[tw`mt-4 text-center text-sm lg:text-base tracking-wide`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
-              Karakter { 
-                getInvalidChar(text).map((item, index) => (
-                  <>
-                    { index > 0 && <span>, </span> }
-                    <span tw="text-red-600 font-bold">{item}</span>
-                  </>
-                ))
-              } tidak memiliki kode morse
-            </span>
+            <InvalidNotice
+              pre="Karakter berikut tidak memiliki kode morse : "
+              invalidItems={getInvalidChar(text)}
+            />
           </div>
           <div tw="flex flex-col lg:w-5/12 mt-8 lg:mt-0">
             <div tw="flex items-end mb-4 lg:mb-6">
@@ -123,16 +118,10 @@ function App() {
                 }}
               />
             </div>
-            <span css={[tw`mt-4 text-center text-sm lg:text-base tracking-wide`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
-              Morse { 
-                getInvalidMorse(morse).map((item, index) => (
-                  <>
-                    { index > 0 && <span>, </span> }
-                    <span tw="text-red-600 font-bold">{item}</span>
-                  </>
-                ))
-              } tidak memiliki karakter alfabet
-            </span>
+            <InvalidNotice
+              pre="Morse berikut tidak memiliki karakter alfabet : "
+              invalidItems={getInvalidMorse(morse)}
+            />
           </div>
         </div>
         <div tw="container mx-auto pb-8 lg:pb-10 px-8">
