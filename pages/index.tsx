@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
 const Select = dynamic(() => import("react-select"), { ssr: false });
-import { Emoji } from 'emoji-mart'
 import toast, { Toaster } from 'react-hot-toast';
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
@@ -19,15 +18,15 @@ import FieldLabel from '../components/FieldLabel';
 function LocaleOption({ countryCode, label }) {
   return (
     <div tw="flex items-center">
-      <Emoji emoji={`flag-${countryCode}`} set='twitter' size={16} />
+      <img src={`/flag-${countryCode}.png`} tw="w-5" alt=""/>
       <span tw="ml-3">{ label }</span>
     </div>
   )
 }
 
 const options = [
-  { value: 'id', label: <LocaleOption label="Indonesia" countryCode="id" /> },
   { value: 'en', label: <LocaleOption label="English" countryCode="us" />  },
+  { value: 'id', label: <LocaleOption label="Indonesia" countryCode="id" /> },
 ]
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
             <h1 tw="text-4xl lg:text-5xl tracking-wide">Semar</h1>
             <p tw="lg:text-lg mt-2 tracking-wide">fast and reliable morse translator</p>
           </div>
-          <div tw="w-48 mt-6 lg:mt-0">
+          <div tw="w-44 mt-6 lg:mt-0">
             <Select
               options={options}
               value={language}

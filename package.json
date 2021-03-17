@@ -15,7 +15,6 @@
     "@splitbee/web": "^0.2.4",
     "@types/lodash-es": "^4.17.4",
     "@types/react-select": "^4.0.13",
-    "emoji-mart": "^3.0.1",
     "lodash": "^4.17.20",
     "next": "^10.0.8",
     "next-pwa": "^5.0.6",
