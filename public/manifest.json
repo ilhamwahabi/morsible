@@ -1,6 +1,7 @@
 {
-  "name": "Semar | Morse App",
+  "name": "Semar - Morse App",
   "short_name": "Semar",
+  "description": "Fast and reliable morse translator",
   "theme_color": "#f9fafb",
   "background_color": "#f9fafb",
   "display": "standalone",
@@ -8,6 +9,8 @@
   "scope": "/",
   "start_url": "/",
   "categories": ["utilities", "productivity"],
+  "prefer_related_applications": false,
+  "related_applications": [],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
