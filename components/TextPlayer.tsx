@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
-import { useTranslation } from 'next-i18next';
 import toast from 'react-hot-toast';
 
 import { getLanguageCode } from '../utils';
@@ -14,8 +13,6 @@ interface IProps {
 function TextPlayer({ text, language }: IProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [audio, setAudio] = useState<HTMLAudioElement>(null)
-
-  const { t } = useTranslation('common')
 
   const play = async () => {
     try {
@@ -76,8 +73,8 @@ function TextPlayer({ text, language }: IProps) {
     >
       { 
         isPlaying
-        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">{ t('button.stop') }</span></div>
-        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">{ t('button.play') }</span></div>
+        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Stop</span></div>
+        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">Play</span></div>
       }
     </button>
   )

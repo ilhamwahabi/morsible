@@ -2,7 +2,6 @@ import { GlobalStyles } from 'twin.macro'
 import splitbee from '@splitbee/web';
 import Head from 'next/head';
 import 'typeface-ubuntu'
-import { appWithTranslation } from 'next-i18next'
 
 import '../index.css'
 
@@ -54,4 +53,4 @@ const App = ({ Component, pageProps }) => (
   </>
 )
 
-export default appWithTranslation(App)
+export default App

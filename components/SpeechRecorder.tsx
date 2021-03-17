@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import useSpeechToText from 'react-hook-speech-to-text';
 import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
-import { useTranslation } from 'next-i18next';
 import toast from 'react-hot-toast';
 
 import { getLanguageCode } from '../utils';
@@ -32,8 +31,6 @@ function Recorder({ updateText, language }: IProps) {
     }
   });
 
-  const { t } = useTranslation('common')
-
   if (error) toast.error(`${error}`)
 
   useEffect(() => { updateText(results) }, [results])
@@ -47,8 +44,8 @@ function Recorder({ updateText, language }: IProps) {
       >
         { 
           isRecording
-            ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">{ t('button.stop') }</span></div>
-            : <div tw="flex items-center"><FaMicrophone /><span tw="ml-2">{ t('button.speak') }</span></div>
+            ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Stop</span></div>
+            : <div tw="flex items-center"><FaMicrophone /><span tw="ml-2">Speak</span></div>
         }
       </button>
     </div>
