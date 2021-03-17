@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
@@ -15,6 +15,7 @@ const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { s
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
 import { useRouter } from 'next/dist/client/router';
+import TextField from '../components/TextField';
 
 function LocaleOption({ countryCode, label }) {
   return (
@@ -79,17 +80,14 @@ function App() {
               </div>
             </div>
             <div tw="relative">
-              <textarea
+              <TextField
                 id="text"
                 placeholder={t('text.placeholder')}
                 value={text}
-                tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                css={[getInvalidChar(text).length > 0 && tw`border-red-600 focus:ring-red-500`]}
-                onChange={event => {
-                  const textInput = event.target.value
-                  
-                  setText(textInput)
-                  setMorse(textToMorse(textInput))
+                isInvalid={getInvalidChar(text).length > 0}
+                updateValue={(value) => {
+                  setText(value)
+                  setMorse(textToMorse(value))
                 }}
               />
             </div>
@@ -112,18 +110,16 @@ function App() {
               <MorsePlayer morse={morse} />
             </div>
             <div tw="relative">
-              <textarea
+              <TextField
                 id="morse"
                 placeholder={t('morse.placeholder')}
                 value={morse}
-                tw="h-4row lg:h-6row w-full border border-gray-400 rounded-2xl resize-none p-4 tracking-wider uppercase focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                css={[getInvalidMorse(morse).length > 0 && tw`border-red-600 focus:ring-red-500`]}
-                onChange={event => {
-                  const morseInput = event.target.value;
-                  if (!(/^[\.\- /]*$/g.test(morseInput))) return toast.error("Karakter tidak valid")
+                isInvalid={getInvalidMorse(morse).length > 0}
+                updateValue={(value) => {
+                  if (!(/^[\.\- /]*$/g.test(value))) return toast.error("Karakter tidak valid")
                   
-                  setMorse(morseInput)
-                  setText(morseToText(morseInput).toUpperCase())
+                  setMorse(value)
+                  setText(morseToText(value).toUpperCase())
                 }}
               />
             </div>
