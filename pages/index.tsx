@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import tw from 'twin.macro'
+import 'twin.macro'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
@@ -17,6 +17,7 @@ import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
 import TextField from '../components/TextField';
 import InvalidNotice from '../components/InvalidNotice';
+import FieldLabel from '../components/FieldLabel';
 
 function LocaleOption({ countryCode, label }) {
   return (
@@ -66,9 +67,7 @@ function App() {
         <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
           <div tw="flex flex-col lg:w-5/12">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <label htmlFor="text" tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">
-                { t('text.title') }
-              </label>
+              <FieldLabel targetId="text" text={t('text.title')} />
               <SpeechRecorder
                 language={router.locale}
                 updateText={(transcript) => {
@@ -99,9 +98,7 @@ function App() {
           </div>
           <div tw="flex flex-col lg:w-5/12 mt-8 lg:mt-0">
             <div tw="flex items-end mb-4 lg:mb-6">
-              <label htmlFor="morse" tw="text-2xl lg:text-3xl text-gray-800 mr-auto pb-1 border-b-2 border-gray-800">
-                { t('morse.title') }
-              </label>
+              <FieldLabel targetId="morse" text={t('morse.title')} />
               <MorsePlayer morse={morse} />
             </div>
             <div tw="relative">
