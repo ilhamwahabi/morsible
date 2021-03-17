@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { useState } from 'react'
 import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
@@ -20,22 +19,29 @@ function TextPlayer({ text, language }: IProps) {
 
   const play = async () => {
     try {
-      const response = await axios.post(`https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`, {
-        "audioConfig": {
-          "audioEncoding": "LINEAR16",
-          "pitch": 0,
-          "speakingRate": 1
-        },
-        "input": {
-          "text": text
-        },
-        "voice": {
-          "languageCode": getLanguageCode(language),
-          "name": `${getLanguageCode(language)}-Wavenet-C`
-        }
+      const response = await fetch(
+        `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            "audioConfig": {
+              "audioEncoding": "LINEAR16",
+              "pitch": 0,
+              "speakingRate": 1
+            },
+            "input": {
+              "text": text
+            },
+            "voice": {
+              "languageCode": getLanguageCode(language),
+              "name": `${getLanguageCode(language)}-Wavenet-C`
+            }
+          }
+        )
       })
-  
-      const sound = new Audio("data:audio/wav;base64," + response.data.audioContent);
+
+      const results = await response.json()
+      const sound = new Audio("data:audio/wav;base64," + results.audioContent);
       sound.addEventListener('play', () => setIsPlaying(true))
       sound.addEventListener('pause', () => setIsPlaying(false))
   
@@ -51,8 +57,14 @@ function TextPlayer({ text, language }: IProps) {
   }
 
   const actionClickPlayButton = async () => {
-    if (!isPlaying) play()
-    else stop()
+    if (!isPlaying) {
+      setIsPlaying(true)
+      play()
+    }
+    else {
+      setIsPlaying(false)
+      stop()
+    }
   }
 
   return (
