@@ -1,7 +1,7 @@
 import { GlobalStyles } from 'twin.macro'
 import splitbee from '@splitbee/web';
 import Head from 'next/head';
-import 'typeface-roboto'
+import 'typeface-ubuntu'
 import { appWithTranslation } from 'next-i18next'
 
 import '../index.css'

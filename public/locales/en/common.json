@@ -1,5 +1,5 @@
 {
-  "subtitle": "fast and reliable morse decoder",
+  "subtitle": "fast and reliable morse translator",
   "text": {
     "title": "Text",
     "placeholder": "Any text"
@@ -21,7 +21,7 @@
     "license": "MIT Licensed.",
     "sponsor": {
       "main": "Buy me a coffee",
-      "caption": "To help me maintain this project"
+      "caption": "Your donation help this project sustainable"
     }
   }
 }

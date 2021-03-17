@@ -141,7 +141,7 @@ function App() {
       <footer tw="text-center text-white py-12 mt-auto bg-gray-800">
         <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
           <div tw="order-2 mt-12 lg:mt-0">
-            <p tw="mt-2">&copy; Ilham Wahabi 2021. { t('footer.license') }</p>
+            <p tw="mt-2 tracking-wide">&copy; Ilham Wahabi 2021. { t('footer.license') }</p>
             <div tw="mt-6 flex justify-center">
               <a href="https://iwgx.io" target="_blank" rel="noopener" aria-label="Website">
                 <FaGlobe size="24" />
@@ -164,7 +164,7 @@ function App() {
                 { t('footer.sponsor.main') }
               </a>
             </p>
-            <p tw="mt-4 lg:mt-5">
+            <p tw="mt-4 lg:mt-5 tracking-wide">
               { t('footer.sponsor.caption') }
             </p>
           </div>

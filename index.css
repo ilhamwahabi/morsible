@@ -1,3 +1,7 @@
 .emoji-mart-emoji {
   display: flex;
 }
+
+* {
+  font-family: "Ubuntu", sans-serif;
+}
