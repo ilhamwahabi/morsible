@@ -21,9 +21,9 @@ const App = ({ Component, pageProps }) => (
       <link rel="shortcut icon" href="favicon.ico" />
 
       {/* <!-- title --> */}
-      <title>Semar | Morse App</title>
-      <meta property='og:title' content='Semar | Morse App' />
-      <meta name='twitter:title' content='Semar | Morse App' />
+      <title>Semar - Morse App</title>
+      <meta property='og:title' content='Semar - Morse App' />
+      <meta name='twitter:title' content='Semar - Morse App' />
       
       {/* <!-- url --> */}
       <link rel='canonical' href='https://semar.iwgx.io' />

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
 const Select = dynamic(() => import("react-select"), { ssr: false });
@@ -14,7 +15,6 @@ import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../ut
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
-import { useRouter } from 'next/dist/client/router';
 import TextField from '../components/TextField';
 
 function LocaleOption({ countryCode, label }) {
@@ -91,7 +91,7 @@ function App() {
                 }}
               />
             </div>
-            <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
+            <span css={[tw`mt-4 text-center text-sm lg:text-base tracking-wide`, getInvalidChar(text).length === 0 && tw`opacity-0`]}>
               Karakter { 
                 getInvalidChar(text).map((item, index) => (
                   <>
@@ -123,7 +123,7 @@ function App() {
                 }}
               />
             </div>
-            <span css={[tw`mt-4 text-center text-sm lg:text-base`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
+            <span css={[tw`mt-4 text-center text-sm lg:text-base tracking-wide`, getInvalidMorse(morse).length === 0 && tw`opacity-0`]}>
               Morse { 
                 getInvalidMorse(morse).map((item, index) => (
                   <>
