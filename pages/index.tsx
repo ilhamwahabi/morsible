@@ -36,11 +36,14 @@ function App() {
 
   return (
     <div tw="min-h-screen flex flex-col">
-      <header tw="bg-blue-500">
+      <header tw="bg-gray-50">
         <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
-          <div tw="text-white">
-            <h1 tw="text-4xl lg:text-5xl tracking-wide">Semar</h1>
-            <p tw="lg:text-lg mt-2 tracking-wide">fast and reliable morse translator</p>
+          <div tw="flex items-center">
+            <img src="/icons/icon-60x60.png" alt=""/>
+            <div tw="text-gray-900 ml-6">
+              <h1 tw="text-3xl lg:text-4xl tracking-wide">Semar</h1>
+              <p tw="text-sm lg:text-base mt-2 tracking-wide">fast and reliable morse translator</p>
+            </div>
           </div>
           <div tw="w-44 mt-6 lg:mt-0">
             <Select
@@ -54,7 +57,7 @@ function App() {
         </div>
       </header>
       <main tw="bg-gray-50 flex-1 flex flex-col justify-center">
-        <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4 ">
+        <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
           <div tw="flex flex-col lg:w-5/12">
             <div tw="flex items-end mb-4 lg:mb-6">
               <FieldLabel targetId="text" text="Text" />
