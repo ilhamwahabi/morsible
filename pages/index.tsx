@@ -2,8 +2,6 @@ import { useState } from 'react'
 import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
-// handle issue: https://github.com/JedWatson/react-select/issues/3590
-const Select = dynamic(() => import("react-select"), { ssr: false });
 import toast, { Toaster } from 'react-hot-toast';
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText, TCountryCode } from "../utils";
@@ -14,23 +12,12 @@ import TextPlayer from '../components/TextPlayer';
 import TextField from '../components/TextField';
 import InvalidNotice from '../components/InvalidNotice';
 import FieldLabel from '../components/FieldLabel';
-
-function LocaleOption({ countryCode, label }: { countryCode: TCountryCode, label: string }) {
-  return (
-    <div tw="flex items-center">
-      <img src={`/flag-${countryCode}.png`} width="20" height="20" alt="" />
-      <span tw="ml-3">{ label }</span>
-    </div>
-  )
-}
-
-const options: { value: TCountryCode, label: React.ReactElement }[] = [
-  { value: 'us', label: <LocaleOption label="English" countryCode="us" />  },
-  { value: 'id', label: <LocaleOption label="Indonesia" countryCode="id" /> },
-]
+import SelectLanguage from '../components/SelectLanguage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 function App() {
-  const [language, setLanguage] = useState(options[0])
+  const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
+  // const [language, setLanguage] = useState<TCountryCode>("us")
   const [isHold, setIsHold] = useState(false)
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
@@ -47,13 +34,7 @@ function App() {
             </div>
           </div>
           <div tw="w-44 mt-6 lg:mt-0">
-            <Select
-              options={options}
-              value={language}
-              onChange={setLanguage}
-              isSearchable={false}
-              aria-label="Languages"
-            />
+            <SelectLanguage language={language} setLanguage={setLanguage} />
           </div>
         </div>
       </header>
@@ -63,7 +44,7 @@ function App() {
             <div tw="flex items-end mb-4 lg:mb-6">
               <FieldLabel targetId="text" text="Text" />
               <SpeechRecorder
-                language={language.value}
+                language={language}
                 updateText={(transcript) => {
                   setText(transcript)
                   setMorse(textToMorse(transcript))
@@ -71,7 +52,7 @@ function App() {
                 setIsHold={setIsHold}
               />
               <div tw="ml-4">
-                <TextPlayer text={text} language={language.value} />
+                <TextPlayer text={text} language={language} />
               </div>
             </div>
             <div tw="relative">
@@ -149,7 +130,7 @@ function App() {
           <div tw="order-1 lg:order-2">
             <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">
               <a
-                href={language.value === "us" ? "https://ko-fi.com/ilhamwahabi" : "https://trakteer.id/ilhamwahabi"}
+                href={language === "us" ? "https://ko-fi.com/ilhamwahabi" : "https://trakteer.id/ilhamwahabi"}
                 target="_blank"
                 rel="noopener"
               >

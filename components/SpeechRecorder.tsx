@@ -12,7 +12,9 @@ interface IProps {
   setIsHold: (isHold: boolean) => void
 }
 
-function Recorder({ updateText, language, setIsHold }: IProps) {
+function Recorder(props: IProps) {
+  const { updateText, language, setIsHold } = props
+
   const {
     error,
     isRecording,
