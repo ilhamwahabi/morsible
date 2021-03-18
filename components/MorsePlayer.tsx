@@ -58,7 +58,7 @@ function MorsePlayer({ morse }: IProps) {
     <button
       disabled={morse === ""}
       tw="tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-min px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
-      css={[isPlaying.status ? tw`bg-red-500 focus:ring-red-300 enabled:hover:bg-red-600` : tw`bg-blue-500 focus:ring-blue-300 enabled:hover:bg-blue-600`]}
+      css={[isPlaying.status ? tw`bg-red-500 focus:ring-red-300 enabled:hover:bg-red-600` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-900`]}
       onClick={actionClickPlayButton}
     >
       { 
