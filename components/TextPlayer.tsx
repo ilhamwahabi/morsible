@@ -69,14 +69,14 @@ function TextPlayer({ text, language }: IProps) {
       <button
         data-tip={`Listen in ${getLanguageName(language)}`}
         disabled={text === ""}
-        tw="tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-min px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
-        css={[isPlaying ? tw`bg-red-500 focus:ring-red-300 enabled:hover:bg-red-600` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-900`]}
+        tw="tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
+        css={[isPlaying ? tw`bg-red-600 focus:ring-red-300 enabled:hover:bg-red-700` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-800`]}
         onClick={actionClickPlayButton}
       >
         { 
           isPlaying
           ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Stop</span></div>
-          : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2">Play</span></div>
+          : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2 tracking-widest">Play</span></div>
         }
       </button>
     </>
