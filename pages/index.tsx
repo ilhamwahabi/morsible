@@ -39,10 +39,10 @@ function App() {
       <header tw="bg-gray-50">
         <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
           <div tw="flex items-center">
-            <img src="/icons/icon-60x60.png" alt=""/>
-            <div tw="text-gray-900 ml-6">
-              <h1 tw="text-3xl lg:text-4xl tracking-wide">Semar</h1>
-              <p tw="text-sm lg:text-base mt-2 tracking-wide">fast and reliable morse translator</p>
+            <img src="/icons/icon-72x72.png" alt="" tw="hidden lg:block mr-8" />
+            <div tw="text-gray-900">
+              <h1 tw="text-4xl lg:text-5xl tracking-wide">Semar</h1>
+              <p tw="lg:text-lg mt-2 tracking-wide">fast and reliable morse translator</p>
             </div>
           </div>
           <div tw="w-44 mt-6 lg:mt-0">
