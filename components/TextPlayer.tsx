@@ -3,11 +3,11 @@ import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
-import { getLanguageCode } from '../utils';
+import { getLanguageCode, TCountryCode } from '../utils';
 
 interface IProps {
   text: string
-  language: string
+  language: TCountryCode
 }
 
 function TextPlayer({ text, language }: IProps) {

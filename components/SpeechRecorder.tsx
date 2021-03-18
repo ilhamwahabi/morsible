@@ -4,10 +4,10 @@ import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
-import { getLanguageCode } from '../utils';
+import { getLanguageCode, TCountryCode } from '../utils';
 
 interface IProps {
-  language: string,
+  language: TCountryCode,
   updateText: (text: string) => void,
   setIsHold: (isHold: boolean) => void
 }
