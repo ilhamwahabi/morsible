@@ -103,7 +103,7 @@ function App() {
                 value={morse}
                 isInvalid={getInvalidMorse(morse).length > 0}
                 updateValue={(value) => {
-                  if (!(/^[\.\- /]*$/g.test(value))) return toast.error("Karakter tidak valid")
+                  if (!(/^[\.\- /]*$/g.test(value))) return toast.error("Please input valid morse character")
                   
                   setMorse(value)
                   setText(morseToText(value).toUpperCase())
