@@ -3,7 +3,7 @@ import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
-import { getLanguageCode, getLanguageName } from '../utils';
+import { getLanguageCode } from '../utils';
 
 interface IProps {
   text: string
@@ -67,7 +67,6 @@ function TextPlayer({ text, language }: IProps) {
   return (
     <>
       <button
-        data-tip={`Listen in ${getLanguageName(language)}`}
         disabled={text === ""}
         tw="tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
         css={[isPlaying ? tw`bg-red-600 focus:ring-red-300 enabled:hover:bg-red-700` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-800`]}
