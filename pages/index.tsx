@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import 'twin.macro'
+import tw from 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
@@ -31,11 +31,12 @@ const options = [
 
 function App() {
   const [language, setLanguage] = useState(options[0])
+  const [isHold, setIsHold] = useState(false)
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
 
   return (
-    <div tw="min-h-screen flex flex-col">
+    <div tw="relative min-h-screen flex flex-col">
       <header tw="bg-gray-50">
         <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
           <div tw="flex items-center">
@@ -67,6 +68,7 @@ function App() {
                   setText(transcript)
                   setMorse(textToMorse(transcript))
                 }}
+                setIsHold={setIsHold}
               />
               <div tw="ml-4">
                 <TextPlayer text={text} language={language.value} />
@@ -161,6 +163,7 @@ function App() {
         </div>
       </footer>
       <Toaster position="bottom-center" />
+      { isHold ? <div tw="w-screen h-screen fixed bg-gray-900 opacity-40" /> : null }
     </div>
   )
 }
