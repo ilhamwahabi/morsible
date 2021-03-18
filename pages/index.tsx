@@ -117,7 +117,7 @@ function App() {
         <footer tw="text-center text-white py-12 mt-auto bg-gray-800">
           <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
             <div tw="order-2 mt-12 lg:mt-0">
-              <p tw="mt-2 tracking-wide">&copy; Ilham Wahabi 2021. MIT Licensed.</p>
+              <p tw="tracking-wide">&copy; Ilham Wahabi 2021. MIT Licensed.</p>
               <div tw="mt-6 flex justify-center">
                 <a href="https://iwgx.io" target="_blank" rel="noopener" tw="hover:(opacity-60) transition-opacity" aria-label="Website">
                   <FaGlobe size="24" />
@@ -131,7 +131,7 @@ function App() {
               </div>
             </div>
             <div tw="order-1 lg:order-2">
-              <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">
+              <p tw="border-white border-b-1 pb-1 w-max mx-auto">
                 <a
                   href={language === "us" ? "https://ko-fi.com/ilhamwahabi" : "https://trakteer.id/ilhamwahabi"}
                   target="_blank"
@@ -140,7 +140,7 @@ function App() {
                   Buy me a coffee
                 </a>
               </p>
-              <p tw="mt-4 lg:mt-5 tracking-wide">
+              <p tw="mt-4 lg:mt-6 tracking-wide">
                 Your donation help this project sustainable
               </p>
             </div>
