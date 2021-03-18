@@ -26,7 +26,7 @@ function App() {
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <div tw="relative min-h-screen flex flex-col">
+      <div tw="relative min-h-screen flex flex-col font-sans">
         <header tw="bg-gray-50">
           <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
             <div tw="flex items-center">

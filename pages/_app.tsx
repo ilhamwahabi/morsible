@@ -1,9 +1,6 @@
 import { GlobalStyles } from 'twin.macro'
 import splitbee from '@splitbee/web';
 import Head from 'next/head';
-import 'typeface-ubuntu'
-
-import '../index.css'
 
 splitbee.init({
   scriptUrl: "/bee.js",

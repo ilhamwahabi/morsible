@@ -26,7 +26,6 @@
     "react-hot-toast": "^1.0.2",
     "react-icons": "^4.2.0",
     "react-select": "^4.2.1",
-    "typeface-ubuntu": "^1.1.13",
     "use-sound": "^2.0.1"
   },
   "devDependencies": {
