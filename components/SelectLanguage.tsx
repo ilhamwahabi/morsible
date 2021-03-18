@@ -11,7 +11,7 @@ interface IOption { value: TCountryCode, label: React.ReactElement }
 function LocaleOption({ countryCode, label }: { countryCode: TCountryCode, label: string }) {
   return (
     <div tw="flex items-center">
-      <img src={`/flag-${countryCode}.png`} width="20" height="20" alt="" />
+      <img src={`/flag-${countryCode}.svg`} width="20" height="20" alt="" />
       <span tw="ml-3">{ label }</span>
     </div>
   )
