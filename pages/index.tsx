@@ -61,8 +61,8 @@ function App() {
               <SpeechRecorder
                 language={language.value}
                 updateText={(transcript) => {
-                  setText(transcript.join('\n'))
-                  setMorse(textToMorse(transcript.join('\n')))
+                  setText(transcript)
+                  setMorse(textToMorse(transcript))
                 }}
               />
               <div tw="ml-4">

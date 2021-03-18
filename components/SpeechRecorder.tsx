@@ -9,7 +9,7 @@ import { getLanguageCode, getLanguageName } from '../utils';
 
 interface IProps {
   language: string,
-  updateText: (text: string[]) => void
+  updateText: (text: string) => void
 }
 
 function Recorder({ updateText, language }: IProps) {
@@ -34,7 +34,7 @@ function Recorder({ updateText, language }: IProps) {
 
   if (error) toast.error(`${error}`)
 
-  useEffect(() => { updateText(results) }, [results])
+  useEffect(() => { updateText(results[results.length - 1] || "") }, [results])
 
   return (
     <div>
