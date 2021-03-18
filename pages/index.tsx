@@ -6,7 +6,7 @@ import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 const Select = dynamic(() => import("react-select"), { ssr: false });
 import toast, { Toaster } from 'react-hot-toast';
 
-import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils";
+import { getInvalidChar, getInvalidMorse, textToMorse, morseToText, TCountryCode } from "../utils";
 // this component use client-side library so we should using dynamic import with ssr disabled
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
@@ -15,7 +15,7 @@ import TextField from '../components/TextField';
 import InvalidNotice from '../components/InvalidNotice';
 import FieldLabel from '../components/FieldLabel';
 
-function LocaleOption({ countryCode, label }) {
+function LocaleOption({ countryCode, label }: { countryCode: TCountryCode, label: string }) {
   return (
     <div tw="flex items-center">
       <img src={`/flag-${countryCode}.png`} tw="w-5" alt=""/>
@@ -24,8 +24,8 @@ function LocaleOption({ countryCode, label }) {
   )
 }
 
-const options = [
-  { value: 'en', label: <LocaleOption label="English" countryCode="us" />  },
+const options: { value: TCountryCode, label: React.ReactElement }[] = [
+  { value: 'us', label: <LocaleOption label="English" countryCode="us" />  },
   { value: 'id', label: <LocaleOption label="Indonesia" countryCode="id" /> },
 ]
 
@@ -149,7 +149,7 @@ function App() {
           <div tw="order-1 lg:order-2">
             <p tw="mt-2 border-white border-b-1 pb-1 w-max mx-auto">
               <a
-                href={language.value === "en" ? "https://ko-fi.com/ilhamwahabi" : "https://trakteer.id/ilhamwahabi"}
+                href={language.value === "us" ? "https://ko-fi.com/ilhamwahabi" : "https://trakteer.id/ilhamwahabi"}
                 target="_blank"
                 rel="noopener"
               >
