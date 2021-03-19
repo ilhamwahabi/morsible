@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
 import { ErrorBoundary } from 'react-error-boundary'
+import Image from 'next/image'
 
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText, TCountryCode } from "../utils";
 // this component use client-side library so we should using dynamic import with ssr disabled
@@ -29,7 +30,9 @@ function App() {
         <header tw="bg-gray-50">
           <div tw="container mx-auto py-8 px-8 flex flex-col lg:flex-row justify-between lg:items-end">
             <div tw="flex items-center">
-              <img src="/icons/icon-72x72.png" alt="" tw="hidden lg:block mr-8" />
+              <div tw="hidden lg:flex mr-8 items-center">
+                <Image src="/icons/icon-72x72.png" alt="" width="72" height="72" loading="eager" priority />
+              </div>
               <div tw="text-gray-900">
                 <h1 tw="text-4xl lg:text-5xl tracking-wide">Semar</h1>
                 <p tw="lg:text-lg mt-2 tracking-wide">fast and reliable morse translator</p>
@@ -146,7 +149,7 @@ function App() {
           </div>
         </footer>
         <Toaster position="bottom-center" />
-        { isHold ? <div tw="w-screen h-screen fixed bg-gray-900 opacity-40" /> : null }
+        { isHold ? <div tw="w-screen h-screen fixed bg-gray-900 opacity-40 top-0 left-0" /> : null }
       </div>
     </ErrorBoundary>
   )
