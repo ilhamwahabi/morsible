@@ -19,7 +19,6 @@ import ErrorFallback from '../components/ErrorFallback';
 
 function App() {
   const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
-  // const [language, setLanguage] = useState<TCountryCode>("us")
   const [isHold, setIsHold] = useState(false)
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
@@ -114,7 +113,7 @@ function App() {
             </p>
           </div>
         </main>
-        <footer tw="text-center text-white py-12 mt-auto bg-gray-800">
+        <footer tw="text-center text-white py-8 lg:py-12 mt-auto bg-gray-800">
           <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
             <div tw="order-2 mt-12 lg:mt-0">
               <p tw="tracking-wide">&copy; Ilham Wahabi 2021. MIT Licensed.</p>
