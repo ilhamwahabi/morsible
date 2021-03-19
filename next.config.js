@@ -1,7 +1,8 @@
 const withTM = require('next-transpile-modules')(['react-hook-speech-to-text']); // pass the modules you would like to see transpiled
 const withPWA = require('next-pwa')
+const withPreact = require('next-plugin-preact');
 
-module.exports = withPWA(withTM({
+module.exports = withPreact(withPWA(withTM({
   webpack: (config, { isServer }) => {
     // Fixes packages that depend on fs/module module
     if (!isServer) {
@@ -25,4 +26,4 @@ module.exports = withPWA(withTM({
   pwa: {
     dest: 'public'
   }
-}))
+})));
