@@ -127,7 +127,7 @@ function App() {
               </p>
             </div>
           </main>
-          <footer tw="text-center text-white py-8 lg:py-12 mt-auto bg-gray-800">
+          <footer tw="text-center text-white py-16 lg:py-12 mt-auto bg-gray-800">
             <div tw="flex flex-col lg:flex-row justify-around container mx-auto px-8">
               <div tw="order-2 mt-12 lg:mt-0">
                 <p tw="tracking-wide">&copy; Ilham Wahabi 2021. MIT Licensed.</p>
@@ -153,7 +153,7 @@ function App() {
                     Buy me a coffee
                   </a>
                 </p>
-                <p tw="mt-4 lg:mt-6 tracking-wide">
+                <p tw="mt-6 tracking-wide">
                   Your donation help this project sustainable
                 </p>
               </div>
