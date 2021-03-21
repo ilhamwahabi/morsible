@@ -17,6 +17,7 @@ import FieldLabel from '../components/FieldLabel';
 import SelectLanguage from '../components/SelectLanguage';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import ErrorFallback from '../components/ErrorFallback';
+import tw from 'twin.macro';
 
 function App() {
   const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
@@ -159,7 +160,10 @@ function App() {
             </div>
           </footer>
           <Toaster position="top-center" />
-          { isHold ? <div tw="w-screen h-screen fixed bg-gray-900 opacity-40 top-0 left-0" /> : null }
+          <div
+            tw="w-screen h-screen fixed bg-gray-900 top-0 left-0 transition"
+            css={[ isHold ? tw`opacity-40 z-0` : tw`opacity-0 z-index[-1]` ]}
+          />
         </div>
       </div>
     </ErrorBoundary>
