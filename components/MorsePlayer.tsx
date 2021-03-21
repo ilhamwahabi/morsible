@@ -40,16 +40,29 @@ function MorsePlayer({ morse }: IProps) {
     setIsPlaying({ status: false })
   }
 
-  useEffect(() => { if (isPlaying.status) play() }, [isPlaying])
+  const stop = () => {
+    dotData.stop()
+    dashData.stop()
+  }
+
+  useEffect(() => {
+    if (isPlaying.status) play()
+    else stop()
+  }, [isPlaying.status])
+  
+  useEffect(() => {
+    if (!isPlaying.status && (dotData.isPlaying || dashData.isPlaying)) stop()
+  }, [dotData.isPlaying, dashData.isPlaying])
 
   const actionClickPlayButton = async () => {
     if (isPlaying.status) {
       // HACK: so state inside play function is mutated
       isPlaying.status = false
+      setIsPlaying({ status: false })
 
-      if (dotData.isPlaying) dotData.stop()
-      if (dashData.isPlaying) dashData.stop()
+      stop()
     } else {
+      isPlaying.status = true
       setIsPlaying({ status: true})
     }
   }
