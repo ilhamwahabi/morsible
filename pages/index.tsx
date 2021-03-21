@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import 'twin.macro'
 import dynamic from 'next/dynamic'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster, useToasterStore } from 'react-hot-toast';
 import { ErrorBoundary } from 'react-error-boundary'
 import Image from 'next/image'
 
@@ -23,6 +23,15 @@ function App() {
   const [isHold, setIsHold] = useState(false)
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
+  const { toasts } = useToasterStore();
+
+  // limit toast number https://github.com/timolins/react-hot-toast/issues/31
+  useEffect(() => {
+    toasts
+      .filter((t) => t.visible) // Only consider visible toasts
+      .filter((_, i) => i >= 2) // Is toast index over limit?
+      .forEach((t) => toast.dismiss(t.id)); // Dismiss – Use toast.remove(t.id) for no exit animation
+  }, [toasts]);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -149,7 +158,7 @@ function App() {
               </div>
             </div>
           </footer>
-          <Toaster position="bottom-center" />
+          <Toaster position="top-center" />
           { isHold ? <div tw="w-screen h-screen fixed bg-gray-900 opacity-40 top-0 left-0" /> : null }
         </div>
       </div>
