@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import 'twin.macro'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 import toast, { Toaster, useToasterStore } from 'react-hot-toast';
 import { ErrorBoundary } from 'react-error-boundary'
-import Image from 'next/image'
+import tw from 'twin.macro';
 
+import { TEvent } from '../utils/event';
 import { TCountryCode } from "../utils/language";
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils/translation";
 // this component use client-side library so we should using dynamic import with ssr disabled
@@ -18,10 +19,9 @@ import FieldLabel from '../components/FieldLabel';
 import SelectLanguage from '../components/SelectLanguage';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import ErrorFallback from '../components/ErrorFallback';
-import tw from 'twin.macro';
-import { TEvent } from '../utils/event';
 
 const TOAST_LIMIT = 2;
+const ITU_URL = "https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf";
 
 function App() {
   const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
@@ -33,9 +33,9 @@ function App() {
   // limit toast number https://github.com/timolins/react-hot-toast/issues/31
   useEffect(() => {
     toasts
-      .filter((t) => t.visible) // Only consider visible toasts
-      .filter((_, i) => i >= TOAST_LIMIT) // Is toast index over limit?
-      .forEach((t) => toast.dismiss(t.id)); // Dismiss – Use toast.remove(t.id) for no exit animation
+      .filter((item) => item.visible) // Only consider visible toasts
+      .filter((_, index) => index >= TOAST_LIMIT) // Is toast index over limit?
+      .forEach((item) => toast.dismiss(item.id)); // Dismiss – Use toast.remove(t.id) for no exit animation
   }, [toasts]);
 
   return (
@@ -123,7 +123,7 @@ function App() {
               <p tw="mx-auto w-max">
                 Semar use {" "}
                 <a
-                  href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
+                  href={ITU_URL}
                   target="_blank"
                   rel="noopener"
                   tw="pb-1 border-b-2 border-gray-800"

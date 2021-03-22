@@ -1,10 +1,9 @@
-import React from 'react'
 import dynamic from 'next/dynamic'
 // handle issue: https://github.com/JedWatson/react-select/issues/3590
 const Select = dynamic(() => import("react-select"), { ssr: false });
 import 'twin.macro'
 
-import { TCountryCode } from '../utils'
+import { TCountryCode } from '../utils/language'
 
 interface IOptionProps {
   countryCode: TCountryCode
@@ -46,7 +45,7 @@ function SelectLanguage(props: ISelectProps) {
       value={options.find(option => option.value === language)}
       onChange={(item: IOption) => setLanguage(item.value)}
       isSearchable={false}
-      aria-label="Languages"
+      aria-label="Select Language"
     />
   )
 }
