@@ -21,7 +21,7 @@ import tw from 'twin.macro';
 
 function App() {
   const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
-  const [isHold, setIsHold] = useState(false)
+  const [isHold, setIsHold] = useState<{ status: boolean, event?: string }>({ status: false, event: '' })
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
   const { toasts } = useToasterStore();
@@ -77,6 +77,7 @@ function App() {
                     placeholder="Any Text"
                     value={text}
                     isInvalid={getInvalidChar(text).length > 0}
+                    isHold={isHold}
                     updateValue={(value) => {
                       setText(value)
                       setMorse(textToMorse(value))
@@ -91,7 +92,7 @@ function App() {
               <div tw="flex flex-col lg:w-5/12 mt-8 lg:mt-0">
                 <div tw="flex items-end mb-4 lg:mb-6">
                   <FieldLabel targetId="morse" text="Morse" />
-                  <MorsePlayer morse={morse} />
+                  <MorsePlayer morse={morse} setIsHold={setIsHold} />
                 </div>
                 <div tw="relative">
                   <TextField
@@ -99,6 +100,7 @@ function App() {
                     placeholder="Morse code"
                     value={morse}
                     isInvalid={getInvalidMorse(morse).length > 0}
+                    isHold={isHold}
                     updateValue={(value) => {
                       if (!(/^[\.\- /]*$/g.test(value))) return toast.error("Please input valid morse character")
                       
@@ -162,7 +164,7 @@ function App() {
           <Toaster position="top-center" />
           <div
             tw="w-screen h-screen fixed bg-gray-900 top-0 left-0 transition"
-            css={[ isHold ? tw`opacity-40 z-0` : tw`opacity-0 z-index[-1]` ]}
+            css={[ isHold.status ? tw`opacity-40 z-0` : tw`opacity-0 z-index[-1]` ]}
           />
         </div>
       </div>

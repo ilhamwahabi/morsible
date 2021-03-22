@@ -10,7 +10,7 @@ import { useDidMount } from '../hooks/useDidMount'
 interface IProps {
   language: TCountryCode,
   updateText: (text: string) => void,
-  setIsHold: (isHold: boolean) => void
+  setIsHold: (isHold: { status: boolean, event?: string }) => void
 }
 
 function Recorder(props: IProps) {
@@ -45,8 +45,8 @@ function Recorder(props: IProps) {
   }
 
   useDidMount(() => {
-    if (isRecording) setIsHold(true)
-    else setIsHold(false)
+    if (isRecording) setIsHold({ status: true, event: 'record-speech' })
+    else setIsHold({ status: false })
   }, [isRecording])
 
   return (
@@ -54,7 +54,7 @@ function Recorder(props: IProps) {
       <button
         onClick={actionButtonClick}
         tw="relative tracking-wider shadow-md text-sm lg:text-base border text-white rounded-lg w-26 lg:w-32 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none) transition-colors duration-300"
-        css={[isRecording ? tw`bg-red-600 focus:ring-red-300 hover:bg-red-700 z-50` : tw`bg-green-700 focus:ring-green-300 hover:bg-green-800` ]}
+        css={[isRecording ? tw`bg-red-600 focus:ring-red-300 hover:bg-red-700 z-10` : tw`bg-green-700 focus:ring-green-300 hover:bg-green-800` ]}
       >
         {
           isRecording

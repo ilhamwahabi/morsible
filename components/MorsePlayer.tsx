@@ -9,9 +9,10 @@ function timeout(ms: number) {
 
 interface IProps {
   morse: string
+  setIsHold: (isHold: { status: boolean, event?: string }) => void
 }
 
-function MorsePlayer({ morse }: IProps) {
+function MorsePlayer({ morse, setIsHold }: IProps) {
   const [isPlaying, setIsPlaying] = useState({ status: false })
 
   const [playDot, dotData] = useSound('/dot.mp3');
@@ -37,6 +38,7 @@ function MorsePlayer({ morse }: IProps) {
       charIndex++
     }
 
+    setIsHold({ status: false })
     setIsPlaying({ status: false })
   }
 
@@ -59,11 +61,13 @@ function MorsePlayer({ morse }: IProps) {
       // HACK: so state inside play function is mutated
       isPlaying.status = false
       setIsPlaying({ status: false })
+      setIsHold({ status: false })
 
       stop()
     } else {
       isPlaying.status = true
       setIsPlaying({ status: true})
+      setIsHold({ status: true, event: 'play-morse' })
     }
   }
 
@@ -71,7 +75,7 @@ function MorsePlayer({ morse }: IProps) {
     <button
       disabled={morse === ""}
       tw="tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
-      css={[isPlaying.status ? tw`bg-red-600 focus:ring-red-300 enabled:hover:bg-red-700` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-800`]}
+      css={[isPlaying.status ? tw`bg-red-600 focus:ring-red-300 enabled:hover:bg-red-700 z-10` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-800`]}
       onClick={actionClickPlayButton}
     >
       { 
