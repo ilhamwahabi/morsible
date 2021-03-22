@@ -1,6 +1,10 @@
+import { ComponentType } from 'react';
+import { FallbackProps } from 'react-error-boundary';
 import 'twin.macro';
 
-function ErrorFallback({ error, resetErrorBoundary }) {
+const ErrorFallback: ComponentType<FallbackProps> = (props) => {
+  const { error, resetErrorBoundary } = props;
+
   return (
     <div tw="flex flex-col items-center justify-center h-screen w-screen p-16 text-center leading-relaxed">
       <p tw="text-4xl text-center">
