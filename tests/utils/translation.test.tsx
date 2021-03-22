@@ -1,4 +1,4 @@
-import { textToMorse, morseToText } from '../../utils';
+import { textToMorse, morseToText } from '../../utils/translation';
 
 const testCase = [
   ['IF4081', '.. ..-. ....- ----- ---.. .----'],
