@@ -5,6 +5,8 @@ import toast from 'react-hot-toast';
 
 import { getLanguageCode, TCountryCode } from '../utils';
 
+const TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1beta1/text:synthesize"
+
 interface IProps {
   text: string
   language: TCountryCode
@@ -20,7 +22,7 @@ function TextPlayer(props: IProps) {
   const play = async () => {
     try {
       const response = await fetch(
-        `https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
+        `${TEXT_TO_SPEECH_URL}?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`,
         {
           method: "POST",
           body: JSON.stringify({
