@@ -6,9 +6,19 @@ import 'twin.macro'
 
 import { TCountryCode } from '../utils'
 
-interface IOption { value: TCountryCode, label: React.ReactElement }
+interface IOption {
+  value: TCountryCode
+  label: React.ReactElement
+}
 
-function LocaleOption({ countryCode, label }: { countryCode: TCountryCode, label: string }) {
+interface IProps {
+  countryCode: TCountryCode
+  label: string
+}
+
+function LocaleOption(props: IProps) {
+  const { countryCode, label } = props;
+
   return (
     <div tw="flex items-center">
       <img src={`/flag-${countryCode}.svg`} width="20" height="20" alt="" />

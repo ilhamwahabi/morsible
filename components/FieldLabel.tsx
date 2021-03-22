@@ -1,4 +1,5 @@
 import 'twin.macro'
+
 interface IProps {
   targetId: string;
   text: string;

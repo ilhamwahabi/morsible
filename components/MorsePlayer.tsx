@@ -13,9 +13,10 @@ interface IProps {
   setIsHold: (isHold: { status: boolean, event?: string }) => void
 }
 
-function MorsePlayer({ morse, setIsHold }: IProps) {
-  const [isPlaying, setIsPlaying] = useState({ status: false })
+function MorsePlayer(props: IProps) {
+  const { morse, setIsHold } = props;
 
+  const [isPlaying, setIsPlaying] = useState({ status: false })
   const [playDot, dotData] = useSound('/dot.mp3');
   const [playDash, dashData] = useSound('/dash.mp3');
 

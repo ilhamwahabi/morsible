@@ -11,7 +11,9 @@ interface IProps {
   setIsHold: (isHold: { status: boolean, event?: string }) => void
 }
 
-function TextPlayer({ text, language, setIsHold }: IProps) {
+function TextPlayer(props: IProps) {
+  const { text, language, setIsHold } = props;
+
   const [isPlaying, setIsPlaying] = useState(false)
   const [audio, setAudio] = useState<HTMLAudioElement>(null)
 
