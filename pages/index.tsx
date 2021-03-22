@@ -6,7 +6,8 @@ import toast, { Toaster, useToasterStore } from 'react-hot-toast';
 import { ErrorBoundary } from 'react-error-boundary'
 import Image from 'next/image'
 
-import { getInvalidChar, getInvalidMorse, textToMorse, morseToText, TCountryCode } from "../utils";
+import { TCountryCode } from "../utils/language";
+import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils/translation";
 // this component use client-side library so we should using dynamic import with ssr disabled
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'

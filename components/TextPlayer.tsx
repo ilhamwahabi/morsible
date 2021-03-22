@@ -3,7 +3,7 @@ import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
-import { getLanguageCode, TCountryCode } from '../utils';
+import { getLanguageCode, TCountryCode } from '../utils/language';
 
 const TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1beta1/text:synthesize"
 

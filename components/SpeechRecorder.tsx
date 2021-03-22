@@ -4,7 +4,7 @@ import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
-import { getLanguageCode, TCountryCode } from '../utils';
+import { getLanguageCode, TCountryCode } from '../utils/language';
 import { useDidMount } from '../hooks/useDidMount'
 
 interface IProps {
