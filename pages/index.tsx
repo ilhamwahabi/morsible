@@ -19,12 +19,13 @@ import SelectLanguage from '../components/SelectLanguage';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import ErrorFallback from '../components/ErrorFallback';
 import tw from 'twin.macro';
+import { TEvent } from '../utils/event';
 
 const TOAST_LIMIT = 2;
 
 function App() {
   const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
-  const [isHold, setIsHold] = useState<{ status: boolean, event?: string }>({ status: false, event: '' })
+  const [isHold, setIsHold] = useState<{ status: boolean, event?: TEvent }>({ status: false })
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
   const { toasts } = useToasterStore({ ariaLive: "assertive" });

@@ -1,0 +1,1 @@
+export type TEvent = "record-speech" | "play-text" | "play-morse"

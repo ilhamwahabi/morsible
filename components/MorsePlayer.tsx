@@ -4,13 +4,15 @@ import useSound from 'use-sound'
 import { FaPlay, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
+import { TEvent } from '../utils/event';
+
 function timeout(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 interface IProps {
   morse: string
-  setIsHold: (isHold: { status: boolean, event?: string }) => void
+  setIsHold: (isHold: { status: boolean, event?: TEvent }) => void
 }
 
 function MorsePlayer(props: IProps) {

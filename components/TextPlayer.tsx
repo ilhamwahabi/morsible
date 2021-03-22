@@ -3,6 +3,7 @@ import tw from 'twin.macro'
 import { FaPlay, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
+import { TEvent } from '../utils/event';
 import { getLanguageCode, TCountryCode } from '../utils/language';
 
 const TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1beta1/text:synthesize"
@@ -10,7 +11,7 @@ const TEXT_TO_SPEECH_URL = "https://texttospeech.googleapis.com/v1beta1/text:syn
 interface IProps {
   text: string
   language: TCountryCode
-  setIsHold: (isHold: { status: boolean, event?: string }) => void
+  setIsHold: (isHold: { status: boolean, event?: TEvent }) => void
 }
 
 function TextPlayer(props: IProps) {

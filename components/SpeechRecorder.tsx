@@ -4,13 +4,14 @@ import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
+import { TEvent } from '../utils/event';
 import { getLanguageCode, TCountryCode } from '../utils/language';
 import { useDidMount } from '../hooks/useDidMount'
 
 interface IProps {
   language: TCountryCode,
   updateText: (text: string) => void,
-  setIsHold: (isHold: { status: boolean, event?: string }) => void
+  setIsHold: (isHold: { status: boolean, event?: TEvent }) => void
 }
 
 function Recorder(props: IProps) {
