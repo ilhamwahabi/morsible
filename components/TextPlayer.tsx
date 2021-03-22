@@ -8,9 +8,10 @@ import { getLanguageCode, TCountryCode } from '../utils';
 interface IProps {
   text: string
   language: TCountryCode
+  setIsHold: (isHold: { status: boolean, event?: string }) => void
 }
 
-function TextPlayer({ text, language }: IProps) {
+function TextPlayer({ text, language, setIsHold }: IProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [audio, setAudio] = useState<HTMLAudioElement>(null)
 
@@ -40,7 +41,10 @@ function TextPlayer({ text, language }: IProps) {
       const results = await response.json()
       const sound = new Audio("data:audio/wav;base64," + results.audioContent);
       sound.addEventListener('play', () => setIsPlaying(true))
-      sound.addEventListener('pause', () => setIsPlaying(false))
+      sound.addEventListener('pause', () => {
+        setIsPlaying(false)
+        setIsHold({ status: false })
+      })
   
       setAudio(sound)
       await sound.play();
@@ -55,10 +59,12 @@ function TextPlayer({ text, language }: IProps) {
 
   const actionClickPlayButton = async () => {
     if (!isPlaying) {
+      setIsHold({ status: true, event: 'play-text' })
       setIsPlaying(true)
       play()
     }
     else {
+      setIsHold({ status: false })
       setIsPlaying(false)
       stop()
     }
@@ -68,8 +74,8 @@ function TextPlayer({ text, language }: IProps) {
     <>
       <button
         disabled={text === ""}
-        tw="tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
-        css={[isPlaying ? tw`bg-red-600 focus:ring-red-300 enabled:hover:bg-red-700` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-800`]}
+        tw="relative tracking-wider shadow-md text-sm lg:text-base disabled:(opacity-50 cursor-not-allowed) transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
+        css={[isPlaying ? tw`bg-red-600 focus:ring-red-300 enabled:hover:bg-red-700 z-10` : tw`bg-blue-700 focus:ring-blue-300 enabled:hover:bg-blue-800`]}
         onClick={actionClickPlayButton}
       >
         { 

@@ -68,7 +68,7 @@ function App() {
                     setIsHold={setIsHold}
                   />
                   <div tw="ml-4">
-                    <TextPlayer text={text} language={language} />
+                    <TextPlayer text={text} language={language} setIsHold={setIsHold} />
                   </div>
                 </div>
                 <div tw="relative">
