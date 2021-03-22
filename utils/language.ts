@@ -9,11 +9,3 @@ export function getLanguageCode (language: TCountryCode): TLanguageCode {
     default: return;
   }
 }
-
-export function getLanguageName(countryCode: TCountryCode): TLanguageName {
-  switch (countryCode) {
-    case "us": return "English"
-    case "id": return "Indonesia"
-    default: return;
-  }
-}

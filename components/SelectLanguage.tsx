@@ -6,17 +6,12 @@ import 'twin.macro'
 
 import { TCountryCode } from '../utils'
 
-interface IOption {
-  value: TCountryCode
-  label: React.ReactElement
-}
-
-interface IProps {
+interface IOptionProps {
   countryCode: TCountryCode
   label: string
 }
 
-function LocaleOption(props: IProps) {
+function LocaleOption(props: IOptionProps) {
   const { countryCode, label } = props;
 
   return (
@@ -27,12 +22,22 @@ function LocaleOption(props: IProps) {
   )
 }
 
+interface IOption {
+  value: TCountryCode
+  label: React.ReactElement
+}
+
 const options: IOption[] = [
   { value: 'us', label: <LocaleOption label="English" countryCode="us" />  },
   { value: 'id', label: <LocaleOption label="Indonesia" countryCode="id" /> },
 ]
 
-function SelectLanguage(props) {
+interface ISelectProps {
+  language: TCountryCode
+  setLanguage: (language: TCountryCode) => void
+}
+
+function SelectLanguage(props: ISelectProps) {
   const { language, setLanguage } = props;
 
   return (
