@@ -26,7 +26,7 @@ function App() {
   const [isHold, setIsHold] = useState<{ status: boolean, event?: string }>({ status: false, event: '' })
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
-  const { toasts } = useToasterStore();
+  const { toasts } = useToasterStore({ ariaLive: "assertive" });
 
   // limit toast number https://github.com/timolins/react-hot-toast/issues/31
   useEffect(() => {
@@ -57,7 +57,7 @@ function App() {
             </div>
           </header>
           <main tw="bg-gray-50 flex-1 flex flex-col justify-center">
-            <div tw="container mx-auto lg:mt-4 mb-6 py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-start justify-between">
+            <div tw="container mx-auto lg:mt-4 mb-4 lg:mb-6 py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-start justify-between">
               <div tw="flex flex-col lg:w-5/12">
                 <div tw="flex items-end mb-4 lg:mb-6">
                   <FieldLabel targetId="text" text="Text" />
