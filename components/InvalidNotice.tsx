@@ -8,8 +8,10 @@ interface IProps {
 function InvalidNotice(props: IProps) {
   const { pre, invalidItems } = props;
 
+  if (invalidItems.length === 0) return null;
+
   return (
-    <span css={[tw`mt-4 text-center text-sm lg:text-base tracking-wide`, invalidItems.length === 0 && tw`opacity-0 visibility[hidden]`]}>
+    <span tw="mt-4 text-center text-sm lg:text-base tracking-wide">
       { pre }
       { 
         invalidItems.map((item, index) => (

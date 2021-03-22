@@ -55,7 +55,7 @@ function App() {
             </div>
           </header>
           <main tw="bg-gray-50 flex-1 flex flex-col justify-center">
-            <div tw="container mx-auto py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-end justify-between lg:mt-4">
+            <div tw="container mx-auto lg:mt-4 mb-6 py-8 lg:py-10 px-8 flex flex-col lg:flex-row lg:items-start justify-between">
               <div tw="flex flex-col lg:w-5/12">
                 <div tw="flex items-end mb-4 lg:mb-6">
                   <FieldLabel targetId="text" text="Text" />
