@@ -16,8 +16,7 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name='description' content='Fast and Reliable Morse App' />
-        <meta name="keywords" content="text,morse,speech,translator,decoder,fast,reliable,iwgx,itu,english,indonesia,pwa" />
+        <meta name="keywords" content="text,morse,speech,translator,translate,decoder,accessibility,fast,reliable,iwgx,itu,english,indonesia,pwa,sound,audio,trakteer,donate,ko-fi" />
         <link rel="shortcut icon" href="favicon.ico" />
 
         {/* <!-- title --> */}
