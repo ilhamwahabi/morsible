@@ -61,7 +61,7 @@ function MorsePlayer(props: IProps) {
   }, [dotData.isPlaying, dashData.isPlaying])
 
   const actionClickPlayButton = async () => {
-    if (morse === "") return toast.error("Please input any morse code")
+    if (morse === "") return toast.error("Please input morse code")
 
     if (isPlaying.status) {
       // HACK: so state inside play function is mutated

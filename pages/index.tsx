@@ -89,7 +89,7 @@ function App() {
                   />
                 </div>
                 <InvalidNotice
-                  pre="Karakter berikut tidak memiliki kode morse : "
+                  pre="The following character did not have morse code: "
                   invalidItems={getInvalidChar(text)}
                 />
               </div>
@@ -114,7 +114,7 @@ function App() {
                   />
                 </div>
                 <InvalidNotice
-                  pre="Morse berikut tidak memiliki karakter alfabet : "
+                  pre="The following morse did not have alphabetic characters: "
                   invalidItems={getInvalidMorse(morse)}
                 />
               </div>
