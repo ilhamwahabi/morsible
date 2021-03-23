@@ -45,7 +45,6 @@ function TextPlayer(props: IProps) {
 
       const results = await response.json()
       const sound = new Audio("data:audio/wav;base64," + results.audioContent);
-      sound.addEventListener('play', () => setIsPlaying(true))
       sound.addEventListener('pause', () => {
         setIsPlaying(false)
         setIsHold({ status: false })
@@ -78,20 +77,18 @@ function TextPlayer(props: IProps) {
   }
 
   return (
-    <>
-      <button
-        aria-label={isPlaying ? 'Stop play' : 'Play text'}
-        tw="relative tracking-wider shadow-md text-sm lg:text-base transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
-        css={[isPlaying ? tw`bg-red-600 focus:ring-red-300 hover:bg-red-700 z-10` : tw`bg-blue-700 focus:ring-blue-300 hover:bg-blue-800`]}
-        onClick={actionClickPlayButton}
-      >
-        { 
-          isPlaying
-          ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Stop</span></div>
-          : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2 tracking-widest">Play</span></div>
-        }
-      </button>
-    </>
+    <button
+      aria-label={isPlaying ? 'Stop play' : 'Play text'}
+      tw="relative tracking-wider shadow-md text-sm lg:text-base transition-all duration-300 border text-white rounded-lg w-22 lg:w-28 px-4 lg:px-6 py-2 focus:(border-transparent ring-2 outline-none)"
+      css={[isPlaying ? tw`bg-red-600 focus:ring-red-300 hover:bg-red-700 z-10` : tw`bg-blue-700 focus:ring-blue-300 hover:bg-blue-800`]}
+      onClick={actionClickPlayButton}
+    >
+      { 
+        isPlaying
+        ? <div tw="flex items-center"><FaStop size="14" /><span tw="ml-2">Stop</span></div>
+        : <div tw="flex items-center"><FaPlay size="14" /><span tw="ml-2 tracking-widest">Play</span></div>
+      }
+    </button>
   )
 }
 

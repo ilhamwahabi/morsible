@@ -9,6 +9,7 @@ import tw from 'twin.macro';
 import { TEvent } from '../utils/event';
 import { TCountryCode } from "../utils/language";
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils/translation";
+
 // this component use client-side library so we should using dynamic import with ssr disabled
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
