@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import useSpeechToText from 'react-hook-speech-to-text';
 import tw from 'twin.macro'
 import { FaMicrophone, FaStop } from "react-icons/fa";
 import toast from 'react-hot-toast';
 
 import { TEvent } from '../utils/event';
-import { getLanguageCode, TCountryCode } from '../utils/language';
+import { getLanguageCode, getLanguageName, TCountryCode } from '../utils/language';
 import { useDidMount } from '../hooks/useDidMount'
+import { usePrevious } from '../hooks/usePrevious';
 
 interface IProps {
   language: TCountryCode,
@@ -35,10 +36,13 @@ function Recorder(props: IProps) {
       languageCode: getLanguageCode(language)
     }
   });
+  const prevResults = usePrevious(results[results.length - 1])
 
   if (error) toast.error(`${error}`)
-
-  useEffect(() => { updateText(results[results.length - 1] || "") }, [results])
+  
+  useEffect(() => {
+    updateText(results[results.length - 1] || "")
+  }, [results])
 
   const actionButtonClick = async () => {
     if (isRecording) stopSpeechToText()
@@ -46,8 +50,15 @@ function Recorder(props: IProps) {
   }
 
   useDidMount(() => {
-    if (isRecording) setIsHold({ status: true, event: 'record-speech' })
-    else setIsHold({ status: false })
+    if (isRecording) {
+      setIsHold({ status: true, event: 'record-speech' })
+    } else {
+      setIsHold({ status: false })
+
+      if (prevResults === undefined && results[results.length - 1] === undefined) {
+        toast(`We can't hear you. Have you spoken in ${getLanguageName(language)}?`)
+      }
+    }
   }, [isRecording])
 
   return (

@@ -73,7 +73,7 @@ export const getInvalidChar = (text: string): string[] => {
   return invalidChar;
 }
 
-export const getInvalidMorse = (morse: string) => {
+export const getInvalidMorse = (morse: string): string[] => {
   let invalidMorse = [];
 
   const splitted = morse.split(' ')
