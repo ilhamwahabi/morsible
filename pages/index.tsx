@@ -31,7 +31,7 @@ function App() {
   const [morse, setMorse] = useState('')
   const { toasts } = useToasterStore({ ariaLive: "assertive" });
 
-  // limit toast number https://github.com/timolins/react-hot-toast/issues/31
+  // limit toast number, https://github.com/timolins/react-hot-toast/issues/31
   useEffect(() => {
     toasts
       .filter((item) => item.visible) // Only consider visible toasts
