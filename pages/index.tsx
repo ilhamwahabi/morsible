@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import { FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 import toast, { Toaster, useToasterStore } from 'react-hot-toast';
 import { ErrorBoundary } from 'react-error-boundary'
@@ -31,13 +32,23 @@ function App() {
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
   const { toasts } = useToasterStore({ ariaLive: "assertive" });
+  const { query } = useRouter()
+
+  useEffect(() => {
+    const parsedText = query["text"] as string
+    
+    if (parsedText) {
+      setText(parsedText)
+      setMorse(textToMorse(parsedText))
+    }
+  }, [query["text"]])
 
   // limit toast number, https://github.com/timolins/react-hot-toast/issues/31
   useEffect(() => {
     toasts
-      .filter((item) => item.visible) // Only consider visible toasts
-      .filter((_, index) => index >= TOAST_LIMIT) // Is toast index over limit?
-      .forEach((item) => toast.dismiss(item.id)); // Dismiss – Use toast.remove(t.id) for no exit animation
+      .filter((item) => item.visible)
+      .filter((_, index) => index >= TOAST_LIMIT)
+      .forEach((item) => toast.dismiss(item.id));
   }, [toasts]);
 
   tinykeys(window, {
@@ -115,9 +126,9 @@ function App() {
                     isHold={isHold}
                     updateValue={(value) => {
                       if (!(/^[\.\- /]*$/g.test(value))) return toast.error("Please input valid morse character")
-                      
+
+                      setText(morseToText(value))
                       setMorse(value)
-                      setText(morseToText(value).toUpperCase())
                     }}
                   />
                 </div>

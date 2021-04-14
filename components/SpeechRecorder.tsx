@@ -36,12 +36,14 @@ function Recorder(props: IProps) {
       languageCode: getLanguageCode(language)
     }
   });
-  const prevResults = usePrevious(results[results.length - 1])
+  // const prevResults = usePrevious(results[results.length - 1])
 
   if (error) toast.error(`${error}`)
   
   useEffect(() => {
-    updateText(results[results.length - 1] || "")
+    const result = results[results.length - 1]
+
+    if (result) updateText(result)
   }, [results])
 
   const actionButtonClick = async () => {
@@ -55,9 +57,9 @@ function Recorder(props: IProps) {
     } else {
       setIsHold({ status: false })
 
-      if (prevResults === undefined && results[results.length - 1] === undefined) {
+      // if (prevResults === undefined && results[results.length - 1] === undefined) {
         // toast(`We can't hear you. Have you spoken in ${getLanguageName(language)}?`)
-      }
+      // }
     }
   }, [isRecording])
 
