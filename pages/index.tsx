@@ -12,7 +12,9 @@ import { TEvent } from '../utils/event';
 import { TCountryCode } from "../utils/language";
 import { getInvalidChar, getInvalidMorse, textToMorse, morseToText } from "../utils/translation";
 
-// this component use client-side library so we should using dynamic import with ssr disabled
+import { useLocalStorage } from '../hooks/useLocalStorage';
+
+// this component use browser-based library so we should using dynamic import with ssr disabled
 const SpeechRecorder = dynamic(() => import('../components/SpeechRecorder'), { ssr: false })
 import MorsePlayer from '../components/MorsePlayer'
 import TextPlayer from '../components/TextPlayer';
@@ -20,11 +22,7 @@ import TextField from '../components/TextField';
 import InvalidNotice from '../components/InvalidNotice';
 import FieldLabel from '../components/FieldLabel';
 import SelectLanguage from '../components/SelectLanguage';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import ErrorFallback from '../components/ErrorFallback';
-
-const TOAST_LIMIT = 2;
-const ITU_URL = "https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf";
 
 function App() {
   const [language, setLanguage] = useLocalStorage<TCountryCode>("semar-language", "us");
@@ -47,7 +45,7 @@ function App() {
   useEffect(() => {
     toasts
       .filter((item) => item.visible)
-      .filter((_, index) => index >= TOAST_LIMIT)
+      .filter((_, index) => index >= 2)
       .forEach((item) => toast.dismiss(item.id));
   }, [toasts]);
 
@@ -142,7 +140,7 @@ function App() {
               <p tw="mx-auto w-max">
                 Semar use {" "}
                 <a
-                  href={ITU_URL}
+                  href="https://www.itu.int/dms_pubrec/itu-r/rec/m/R-REC-M.1677-1-200910-I!!PDF-E.pdf"
                   target="_blank"
                   rel="noopener"
                   tw="pb-1 border-b-2 border-gray-800"

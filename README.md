@@ -1,13 +1,12 @@
 # Semar
 
-Translator for text <-> morse with audio functionality. Have optimized performance, pwa support, and accessibility friendly.
+Translator for text <-> morse with speech functionality. Have optimized performance, PWA support, and accessibility friendly.
 
 Built for the sake of `IF4081 - Informatika untuk Komunitas` lectures, also to explore new tech stack and things about audio management in ~~React~~ Preact.
 
 Tech stack:
 
 - ~~`React`~~ Preact + `Typescript` with `Next.js`
-- `jotai` for state management
 - `twin.macro` with `emotion` and `Tailwind CSS` for styling
 - `@testing-library/react` and `Jest` for testing
 - `Splitbee` for analytics
