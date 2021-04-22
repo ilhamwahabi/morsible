@@ -32,7 +32,7 @@ function App() {
   const [text, setText] = useState('')
   const [morse, setMorse] = useState('')
   const { toasts } = useToasterStore({ ariaLive: "assertive" });
-  const { query } = useRouter()
+  const { query } = useRouter() || { query: { text: '' } }
 
   useEffect(() => {
     const parsedText = query["text"] as string
