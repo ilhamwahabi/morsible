@@ -1,4 +1,4 @@
-import { textToMorse, morseToText, getInvalidChar } from '../../utils/translation';
+import { textToMorse, morseToText, getInvalidChar, getInvalidMorse } from '../../utils/translation';
 
 const [case1, case2, case3] = [
   ['IF4081', '.. ..-. ....- ----- ---.. .----'],
@@ -34,12 +34,22 @@ describe('translate morse to text correctly', () => {
   })
 })
 
-describe('return array of invalid characters when any character invalid', () => {
-  it('return invalid characters', () => {
+describe('return array of invalid characters when any character is invalid', () => {
+  it('return array of invalid characters', () => {
     expect(getInvalidChar("^1 Bintang *")).toEqual(["^", "*"])
   })
 
   it('return empty array', () => {
     expect(getInvalidChar("7u5t a n0rm4l t3xt")).toEqual([])
+  })
+})
+
+describe('return array of invalid morse when any morse is invalid', () => {
+  it('return array of invalid morse', () => {
+    expect(getInvalidMorse("... ....--- ---..... --. .")).toEqual(["....---", "---....."])
+  })
+
+  it('return empty array', () => {
+    expect(getInvalidMorse(".. -. ..-. --- .-. -- .- - .. -.- .-")).toEqual([])
   })
 })
