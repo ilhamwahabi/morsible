@@ -1,15 +1,13 @@
-/** 
- * https://usehooks.com/useLocalStorage/ 
- * 
- * -> improved with generic typings
- * */
+/**
+ * https://usehooks.com/useLocalStorage/
+ */
 
 import { useState } from "react";
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
-  const [storedValue, setStoredValue] = useState(() => {
+  const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       // Get from local storage by key
       const item = window.localStorage.getItem(key);
@@ -17,13 +15,13 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       return item ? JSON.parse(item) : initialValue;
     } catch (error) {
       // If error also return initialValue
-      throw error;
+      throw Error;
     }
   });
 
   // Return a wrapped version of useState's setter function that ...
   // ... persists the new value to localStorage.
-  const setValue = (value: T) => {
+  const setValue = (value: T | ((val: T) => T)) => {
     try {
       // Allow value to be a function so we have same API as useState
       const valueToStore =
@@ -34,9 +32,9 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       // A more advanced implementation would handle the error case
-      throw error;
+      throw Error;
     }
   };
 
-  return [storedValue, setValue];
+  return [storedValue, setValue] as const;
 }
