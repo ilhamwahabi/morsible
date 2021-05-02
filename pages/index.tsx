@@ -49,11 +49,13 @@ function App() {
       .forEach((item) => toast.dismiss(item.id));
   }, [toasts]);
 
-  tinykeys(window, {
-    "Tab": (event) => {
-      if (isHold.status) event.preventDefault()
-    },
-  })
+  if (typeof window !== "undefined") {
+    tinykeys(window, {
+      "Tab": (event) => {
+        if (isHold.status) event.preventDefault()
+      },
+    })
+  }
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

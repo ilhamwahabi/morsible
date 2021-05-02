@@ -8,9 +8,6 @@ splitbee.init({
 })
 
 const App = ({ Component, pageProps }) => {
-  // fix `Reference error: window is not defined`, although we not use SSR 
-  if (typeof window === 'undefined') return <div />
-
   return (
     <>
       <Head>
