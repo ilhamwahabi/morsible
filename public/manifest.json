@@ -8,9 +8,40 @@
   "orientation": "portrait",
   "scope": "/",
   "start_url": "/",
-  "categories": ["utilities", "productivity"],
+  "categories": [
+    "utilities",
+    "productivity"
+  ],
   "prefer_related_applications": false,
   "related_applications": [],
+  "screenshots": [
+    {
+      "src": "screenshots/1.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/2.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/3.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/4.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshots/5.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [],
   "icons": [
     {
       "src": "icons/icon-72x72.png",
