@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "io.iwgx.semar.twa",
+                   "sha256_cert_fingerprints": ["5F:3A:A0:29:CD:F3:5C:6A:57:34:C5:80:2D:BB:9B:51:F2:30:E5:C7:46:B7:16:75:46:A7:4A:C1:DD:EC:B4:B7"] }
+    }]
