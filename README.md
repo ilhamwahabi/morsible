@@ -1,4 +1,4 @@
-# Semar
+# Morsible
 
 Translator for text <-> morse with speech functionality. Have optimized performance, PWA support, and accessibility friendly.
 
@@ -24,4 +24,4 @@ NEXT_PUBLIC_GOOGLE_API_KEY=xxxxxxxxxx
 3. Install package, `npm install`
 4. Run, `npm run dev`
 
-Or open direcly here https://semar.iwgx.io
+Or open direcly here https://morsible.iwgx.io

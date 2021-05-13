@@ -5,7 +5,7 @@
             ],
             "target": {
                   "namespace": "android_app",
-                  "package_name": "io.iwgx.semar.twa",
+                  "package_name": "io.iwgx.morsible.twa",
                   "sha256_cert_fingerprints": [
                         "5F:3A:A0:29:CD:F3:5C:6A:57:34:C5:80:2D:BB:9B:51:F2:30:E5:C7:46:B7:16:75:46:A7:4A:C1:DD:EC:B4:B7",
                         "F7:28:DC:BF:3A:B7:B9:93:01:3D:74:85:E2:82:32:8F:3F:B2:AE:7B:B2:D5:61:67:CB:BA:E1:9D:85:2D:F3:E1"
