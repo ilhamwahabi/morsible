@@ -1,14 +1,12 @@
 [
       {
-            "relation": [
-                  "delegate_permission/common.handle_all_urls"
-            ],
-            "target": {
+            "relation": ["delegate_permission/common.handle_all_urls"],
+            "target" : {
                   "namespace": "android_app",
                   "package_name": "io.iwgx.morsible.twa",
                   "sha256_cert_fingerprints": [
-                        "5F:3A:A0:29:CD:F3:5C:6A:57:34:C5:80:2D:BB:9B:51:F2:30:E5:C7:46:B7:16:75:46:A7:4A:C1:DD:EC:B4:B7",
-                        "F7:28:DC:BF:3A:B7:B9:93:01:3D:74:85:E2:82:32:8F:3F:B2:AE:7B:B2:D5:61:67:CB:BA:E1:9D:85:2D:F3:E1"
+                        "90:C7:F6:94:D5:EC:66:4B:D7:67:82:B7:93:C8:0E:F2:03:D7:58:A1:1C:3A:5F:70:DE:CC:8C:62:9A:C3:C9:FF",
+                        "BA:3F:E9:9F:96:A2:84:03:DC:B2:C1:A3:9F:AA:37:67:B0:C7:46:67:B8:12:F4:04:87:FE:5E:DD:B4:E2:66:4C"
                   ]
             }
       }
