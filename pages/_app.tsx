@@ -94,11 +94,11 @@ const App = ({ Component, pageProps }) => {
         {/* <!-- image --> */}
         <meta
           property="og:image"
-          content="https://i.ibb.co/tY8jSh0/morsible-card.png"
+          content="https://i.ibb.co/ZVvtpJZ/morsible-card.png"
         />
         <meta
           name="twitter:image"
-          content="https://i.ibb.co/tY8jSh0/morsible-card.png"
+          content="https://i.ibb.co/ZVvtpJZ/morsible-card.png"
         />
       </Head>
       <GlobalStyles />
