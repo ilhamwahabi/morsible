@@ -6,7 +6,6 @@ import { FaGithub, FaGlobe, FaTwitter, FaGooglePlay } from "react-icons/fa";
 import toast, { Toaster, useToasterStore } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
 import tw from "twin.macro";
-import tinykeys from "tinykeys";
 
 import { TEvent } from "../utils/event";
 import { TCountryCode } from "../utils/language";
@@ -60,14 +59,6 @@ function App() {
       .filter((_, index) => index >= 2)
       .forEach((item) => toast.dismiss(item.id));
   }, [toasts]);
-
-  if (typeof window !== "undefined") {
-    tinykeys(window, {
-      Tab: (event) => {
-        if (isHold.status) event.preventDefault();
-      },
-    });
-  }
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
