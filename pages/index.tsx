@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FaGithub, FaGlobe, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaGlobe, FaTwitter, FaGooglePlay } from "react-icons/fa";
 import toast, { Toaster, useToasterStore } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
 import tw from "twin.macro";
@@ -206,13 +206,22 @@ function App() {
                     <FaTwitter size="24" />
                   </a>
                   <a
-                    href="https://github.com/iwgx"
+                    href="https://github.com/iwgx/morsible"
                     target="_blank"
                     rel="noopener"
                     tw="ml-8 hover:(opacity-60) transition-opacity"
                     aria-label="Github"
                   >
                     <FaGithub size="24" />
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=io.iwgx.morsible.twa"
+                    target="_blank"
+                    rel="noopener"
+                    tw="ml-8 hover:(opacity-60) transition-opacity"
+                    aria-label="Google Play"
+                  >
+                    <FaGooglePlay size="22" />
                   </a>
                 </div>
               </div>
