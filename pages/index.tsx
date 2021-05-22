@@ -217,7 +217,7 @@ function App() {
                 </div>
               </div>
               <div tw="order-1 lg:order-2">
-                <p tw="border-white border-b-1 pb-1 w-max mx-auto">
+                <p tw="border-white border-b pb-1 w-max mx-auto">
                   <a
                     href={
                       language === "us"

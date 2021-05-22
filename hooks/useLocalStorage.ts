@@ -17,7 +17,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       }
     } catch (error) {
       // If error also return initialValue
-      throw Error;
+      throw Error(error);
     }
   });
 
@@ -36,7 +36,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       }
     } catch (error) {
       // A more advanced implementation would handle the error case
-      throw Error;
+      throw Error(error);
     }
   };
 
