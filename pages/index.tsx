@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { FaGithub, FaGlobe, FaTwitter, FaGooglePlay } from "react-icons/fa";
 import toast, { Toaster, useToasterStore } from "react-hot-toast";
 import { ErrorBoundary } from "react-error-boundary";
@@ -41,16 +41,16 @@ function App() {
   const [text, setText] = useState("");
   const [morse, setMorse] = useState("");
   const { toasts } = useToasterStore({ ariaLive: "assertive" });
-  const { query } = useRouter() || { query: { text: "" } };
+  // const { query } = useRouter() || { query: { text: "" } };
 
-  useEffect(() => {
-    const parsedText = query["text"] as string;
+  // useEffect(() => {
+  //   const parsedText = query["text"] as string;
 
-    if (parsedText) {
-      setText(parsedText);
-      setMorse(textToMorse(parsedText));
-    }
-  }, [query["text"]]);
+  //   if (parsedText) {
+  //     setText(parsedText);
+  //     setMorse(textToMorse(parsedText));
+  //   }
+  // }, [query["text"]]);
 
   // limit toast number, https://github.com/timolins/react-hot-toast/issues/31
   useEffect(() => {
