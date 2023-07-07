@@ -23,5 +23,3 @@ NEXT_PUBLIC_GOOGLE_API_KEY=xxxxxxxxxx
 
 3. Install package, `npm install`
 4. Run, `npm run dev`
-
-Or open direcly here https://morsible.iwgx.io
