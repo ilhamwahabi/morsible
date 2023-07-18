@@ -179,7 +179,7 @@ function App() {
                 </p>
                 <div tw="mt-6 flex justify-center">
                   <a
-                    href="https://iwgx.io"
+                    href="https://ilhamwahabi.com"
                     target="_blank"
                     rel="noopener"
                     tw="hover:(opacity-60) transition-opacity"
@@ -197,7 +197,7 @@ function App() {
                     <FaTwitter size="24" />
                   </a>
                   <a
-                    href="https://github.com/iwgx/morsible"
+                    href="https://github.com/ilhamwahabi/morsible"
                     target="_blank"
                     rel="noopener"
                     tw="ml-8 hover:(opacity-60) transition-opacity"
