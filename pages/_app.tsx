@@ -15,7 +15,7 @@ const App = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="keywords"
-          content="text,morse,speech,translator,translate,decoder,accessibility,fast,reliable,iwgx,itu,english,indonesia,pwa,sound,audio,trakteer,donate,ko-fi"
+          content="text,morse,speech,translator,translate,decoder,accessibility,fast,reliable,iwgx,itu,english,indonesia,pwa,sound,audio,trakteer,donate"
         />
         <meta name="format-detection" content="telephone=no" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -40,7 +40,7 @@ const App = ({ Component, pageProps }) => {
         <meta name="twitter:creator" content="@ilhamwahabigx" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="iwgx" />
+        <meta property="og:site_name" content="ilhamwahabi" />
 
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="msapplication-TileColor" content="#f9fafb" />
@@ -73,9 +73,9 @@ const App = ({ Component, pageProps }) => {
         />
 
         {/* <!-- url --> */}
-        <link rel="canonical" href="https://morsible.iwgx.io" />
-        <meta property="og:url" content="https://morsible.iwgx.io" />
-        <meta name="twitter:url" content="https://morsible.iwgx.io" />
+        <link rel="canonical" href="https://morsible.ilhamwahabi.com" />
+        <meta property="og:url" content="https://morsible.ilhamwahabi.com" />
+        <meta name="twitter:url" content="https://morsible.ilhamwahabi.com" />
 
         {/* <!-- description --> */}
         <meta
